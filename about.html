@@ -28,12 +28,35 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
+        .buttons-container {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .buttons-container a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #255F36; /* Dark green */
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .buttons-container a:hover {
+            background-color: #1D472A; /* Darker green on hover */
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>About Remo Ryser</h1>
         <p>Hi there! I'm Remo Ryser.</p>
+    </div>
+    <div class="buttons-container">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
     </div>
 </body>
 </html>

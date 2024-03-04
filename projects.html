@@ -28,6 +28,24 @@
             line-height: 1.6;
             margin-bottom: 20px;
         }
+        .buttons-container {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .buttons-container a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #255F36; /* Dark green */
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .buttons-container a:hover {
+            background-color: #1D472A; /* Darker green on hover */
+        }
     </style>
 </head>
 <body>
@@ -40,6 +58,11 @@
             <li>Project 3: Description of Project 3</li>
             <!-- Add more projects as needed -->
         </ul>
+    </div>
+    <div class="buttons-container">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
     </div>
 </body>
 </html>
