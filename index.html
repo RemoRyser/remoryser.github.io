@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-	<li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
-</nav>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,32 +23,44 @@
             margin-bottom: 20px;
             color: #255F36; /* Dark green */
         }
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        nav ul {
+            list-style-type: none;
+            padding: 0;
         }
-        footer {
-            background-color: #255F36; /* Dark green */
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        nav ul li a {
+            text-decoration: none;
             color: #fff; /* White */
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            left: 0;
+            background-color: #255F36; /* Dark green */
+            padding: 10px 20px;
+            border-radius: 5px;
         }
-        footer p {
-            margin: 0;
-            font-size: 0.8em;
+        nav ul li a:hover {
+            background-color: #1D472A; /* Darker green on hover */
+        }
+        .under-construction {
+            font-size: 1.5em;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Welcome to Remo Ryser's GitHub Homepage</h1>
-	<p>This homepage is under construction</p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
         <p>This is a simple GitHub homepage with an ecological theme.</p>
         <p>Feel free to explore!</p>
+        <p class="under-construction">This homepage is currently under construction.</p>
     </div>
     <footer>
         <div class="container">
