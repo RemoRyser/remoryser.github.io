@@ -4,60 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Remo Ryser's GitHub Homepage</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #D3E1A3; /* Light green */
-            color: #333; /* Dark gray */
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #255F36; /* Dark green */
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 10px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #fff; /* White */
-            background-color: #255F36; /* Dark green */
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        nav ul li a:hover {
-            background-color: #1D472A; /* Darker green on hover */
-        }
-        .under-construction {
-            font-size: 1.5em;
-            margin-top: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a id="home" href="index.html" class="active">Home</a></li>
+            <li><a id="about" href="about.html">About</a></li>
+            <li><a id="projects" href="projects.html">Projects</a></li>
+            <li><a id="contact" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
     <div class="container">
         <h1>Welcome to Remo Ryser's GitHub Homepage</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+
         <p>This is a simple GitHub homepage with an ecological theme.</p>
         <p>Feel free to explore!</p>
         <p class="under-construction">This homepage is currently under construction.</p>
@@ -67,5 +28,15 @@
             <p>&copy; 2024 Remo Ryser | All rights reserved</p>
         </div>
     </footer>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop();
+                var link = document.getElementById(page.split('.')[0]);
+                if (link) {
+                    link.classList.add('active');
+                }
+            });
+        </script>
 </body>
 </html>

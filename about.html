@@ -3,61 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
     <title>About Remo Ryser</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #D3E1A3; /* Light green */
-            color: #333; /* Dark gray */
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #255F36; /* Dark green */
-        }
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .buttons-container {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-        .buttons-container a {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #255F36; /* Dark green */
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        .buttons-container a:hover {
-            background-color: #1D472A; /* Darker green on hover */
-        }
-    </style>
+
 </head>
 <body>
     <div class="container">
         <h1>About Remo Ryser</h1>
         <img class="about-image" src="images/remo-ryser.jpg" alt="Remo Ryser" width="300">
-        <p>Hi there! I'm Remo Ryser.</p>
+        <p>Hi there! I'm Remo.</p>
+        <p>I am an ecologist that has fallen in love with theory.</p>
+        <p>During my undergraduats I conducted extensive fieldwork at night to understand how artificial light at night affects plant-pollinator networs. I was quickly fascinated networks and their structures. Later, while doing an internship at the natural history museum where I worked on modelling phylogenetic trees based on molecular and morphological information, I gathered my first experiences with bioinformatic tools and computational biology.</p>
+        <p>I then moved to Leipzig where I did my PhD at <a href="https://www.idiv.de/de/index.html">iDiv</a> under the supervision of Uli Brose. There I extended a bioenergetic food-web model into space by incorporating spatialy explicit landscapes of patches connected by species-specific dispersal. In computer simulations I then used this model to explore how habitat isolation, patch sizes and distributions and landscape heterogeneity drive the persistence of species and the stability of (meta-) food webs. In the following postdoc I delved deeper into questions about food-web assembly, the interface between ecological and economic models in fisheries, spatial scales and processes and artificial light at night. My interest in understanding fundamental mechanisms that govern biodiversity and ecological processes and patterns is something all these questions have in common.</p>
+        <p>Despite my love for theory, I remain and ecologist at heart and am fascinated by nature. This includes astronomy and physics, and foremoste, being in and enjoying nature. Nothing makes me feel more free than swimming in the river or hiking or skiing in the mountains.</p>
+        
+        <img class="about-image" src="images/mountains.jpg" alt="Mountains in the Swiss Alps" width="300">
     </div>
-    <div class="buttons-container">
-        <a href="index.html">Home</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+    <div class="container3">
+    <h3>Selected publications:</h3>
+        
     </div>
+    
+    
+    <nav>
+        <ul>
+            <li><a id="home" href="index.html">Home</a></li>
+            <li><a id="about" href="about.html">About</a></li>
+            <li><a id="projects" href="projects.html">Projects</a></li>
+            <li><a id="contact" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop();
+                var link = document.getElementById(page.split('.')[0]);
+                if (link) {
+                    link.classList.add('active');
+                }
+            });
+        </script>
 </body>
 </html>
+

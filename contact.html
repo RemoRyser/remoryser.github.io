@@ -3,50 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
     <title>Contact Remo Ryser</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #D3E1A3; /* Light green */
-            color: #333; /* Dark gray */
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #255F36; /* Dark green */
-        }
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .buttons-container {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-        }
-        .buttons-container a {
-            display: block;
-            margin-bottom: 10px;
-            text-decoration: none;
-            color: #fff;
-            background-color: #255F36; /* Dark green */
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-        .buttons-container a:hover {
-            background-color: #1D472A; /* Darker green on hover */
-        }
-    </style>
+
 </head>
 <body>
     <div class="container">
@@ -56,10 +15,23 @@
         <p>Phone: +1234567890</p>
         <p>Address: the woods</p>
     </div>
-    <div class="buttons-container">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-    </div>
+    <nav>
+        <ul>
+            <li><a id="home" href="index.html">Home</a></li>
+            <li><a id="about" href="about.html">About</a></li>
+            <li><a id="projects" href="projects.html">Projects</a></li>
+            <li><a id="contact" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop();
+                var link = document.getElementById(page.split('.')[0]);
+                if (link) {
+                    link.classList.add('active');
+                }
+            });
+        </script>
 </body>
 </html>
