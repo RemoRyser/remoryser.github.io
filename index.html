@@ -1,55 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Ecology — Remo Ryser, University of Bern</title>
+<meta name="description" content="Mechanistic, trait-based models of trophic and spatial networks — theory to forecasts real biodiversity change.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a id="about" href="about.html">About Remo</a></li>
-            <li><a id="people" href="people.html">Team</a></li>
-            <li><a id="projects" href="projects.html">Projects</a></li>
-            <li><a id="contact" href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <h1>Welcome to Remo's homepage</h1>
 
-        <h2>This homepage aims to provide an overview of the people in the lab and the research we are conducting.</h2>
-        <p>We are broadly interested in biodiversity, ecosystems and ecological networks and how they work. We primarily use theoretical tool such as maths and computer simulations to gain a general understanding of mechanisms that shape ecolocigal patterns, relationships and functions across spatial scales - fundamentally and in response to perturbations and global change.</p>
-    
-    <body>
-            <div class="container2">
-                <h2>News</h2>
+<nav class="site-nav">
+  <div class="wide">
+    <a class="brand" href="#top">NETWORK ECOLOGY</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-                <p>Our thematic session on Dynamical Ecological Networks: connecting topics and approaches form the BES2024 meeting:</p>
+<header class="hero" id="top">
+  <div class="eq-float" id="eqf1" style="top:14%; right:6%;"></div>
+  <svg class="hero-net" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path class="edge" d="M120,380 L300,220" />
+    <path class="edge pulse" d="M300,220 L520,300" />
+    <path class="edge" d="M300,220 L260,90" />
+    <path class="edge" d="M520,300 L720,140" />
+    <path class="edge pulse" d="M520,300 L640,420" />
+    <path class="edge" d="M720,140 L900,220" />
+    <path class="edge" d="M720,140 L980,80" />
+    <path class="edge pulse" d="M900,220 L1080,340" />
+    <path class="edge" d="M640,420 L900,220" />
+    <path class="edge" d="M260,90 L520,300" />
+    <path class="edge" d="M980,80 L1150,180" />
+    <circle class="node" cx="120" cy="380" r="4" />
+    <circle class="node" cx="300" cy="220" r="6" />
+    <circle class="node glow" cx="520" cy="300" r="5" />
+    <circle class="node" cx="260" cy="90" r="3.5" />
+    <circle class="node" cx="720" cy="140" r="7" />
+    <circle class="node" cx="900" cy="220" r="4.5" />
+    <circle class="node glow" cx="980" cy="80" r="4" />
+    <circle class="node" cx="640" cy="420" r="5" />
+    <circle class="node" cx="1080" cy="340" r="3.5" />
+    <circle class="node" cx="1150" cy="180" r="4" />
+  </svg>
+  <div class="wide hero-content">
+    <span class="eyebrow">Network Ecology — Institute of Ecology and Evolution, University of Bern</span>
+    <h1>Networks among species & networks in space</h1>
+    <p class="lede">We model how species interaction networks and spatial networks form, move, and change — aiming to turn mechanistic, first-principles theory into forecasts for real biodiversity decisions.</p>
+  </div>
+</header>
 
-               
-               <iframe width="560" height="315" src="https://www.youtube.com/embed/HXFYJvMHO1k" title="BES2024 Thematic Session - Dynamical Ecological Networks: connecting topics and approaches" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-           
-            </div>
-            
-            
-
+<section class="block">
+  <div class="eq-float" id="eqf2" style="top:8%; left:4%;"></div>
+  <div class="wide approach">
+    <div>
+      <span class="eyebrow">Approach</span>
+      <h2>A mechanistic core</h2>
+      <p>Our models build up from individual traits and metabolism — body size, foraging, movement — to predict how populations, food webs, and whole landscapes work and respond to change. The same bioenergetic core scales from a single patch to a spatially explicit meta-food-web.</p>
     </div>
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Remo Ryser | All rights reserved</p>
+    <div>
+      <div class="diagram-card">
+        <svg class="zoom-layer layer-a" viewBox="0 0 400 260" aria-hidden="true">
+          <defs>
+            <g id="iconTree">
+              <line x1="0" y1="2" x2="0" y2="9" stroke="var(--line)" stroke-width="1.4" />
+              <circle cx="0" cy="-2" r="5" fill="var(--accent)" opacity="0.85" />
+            </g>
+            <g id="iconPaw">
+              <ellipse cx="0" cy="2" rx="3.4" ry="2.6" fill="var(--glow)" opacity="0.9" />
+              <circle cx="-3.2" cy="-2" r="1.15" fill="var(--glow)" opacity="0.9" />
+              <circle cx="0" cy="-3.4" r="1.25" fill="var(--glow)" opacity="0.9" />
+              <circle cx="3.2" cy="-2" r="1.15" fill="var(--glow)" opacity="0.9" />
+            </g>
+            <g id="iconLeaf">
+              <path d="M0,-6 C4,-4 4,4 0,6 C-4,4 -4,-4 0,-6 Z" fill="var(--accent)" opacity="0.85" />
+              <line x1="0" y1="-6" x2="0" y2="6" stroke="var(--bg)" stroke-width="0.6" />
+            </g>
+          </defs>
+          <path d="M0,230 C80,210 160,242 240,216 C300,200 360,222 400,206" class="fw-contour" />
+          <path d="M0,52 C90,30 180,56 260,34 C320,18 370,40 400,26" class="fw-contour" />
+          <ellipse class="fw-patch" cx="90" cy="195" rx="42" ry="34" />
+          <ellipse class="fw-patch fw-patch-main" cx="190" cy="150" rx="50" ry="40" />
+          <ellipse class="fw-patch" cx="290" cy="185" rx="36" ry="30" />
+          <ellipse class="fw-patch" cx="320" cy="90" rx="30" ry="26" />
+          <ellipse class="fw-patch" cx="140" cy="75" rx="28" ry="24" />
+          <use href="#iconTree" x="74" y="183" />
+          <use href="#iconTree" x="102" y="192" />
+          <use href="#iconTree" x="172" y="134" />
+          <use href="#iconPaw" x="207" y="163" />
+          <use href="#iconTree" x="280" y="174" />
+          <use href="#iconPaw" x="316" y="79" />
+          <use href="#iconTree" x="134" y="63" />
+        </svg>
+        <svg class="zoom-layer layer-b" viewBox="0 0 400 260" aria-hidden="true">
+          <line class="fw-link" x1="90" y1="195" x2="190" y2="150" />
+          <line class="fw-link" x1="190" y1="150" x2="290" y2="185" />
+          <line class="fw-link" x1="190" y1="150" x2="140" y2="75" />
+          <line class="fw-link" x1="290" y1="185" x2="320" y2="90" />
+          <line class="fw-link" x1="140" y1="75" x2="320" y2="90" />
+          <circle class="fw-node herbivore" cx="90" cy="195" r="15" />
+          <circle class="fw-node predator fw-node-main" cx="190" cy="150" r="20" />
+          <circle class="fw-node herbivore" cx="290" cy="185" r="13" />
+          <circle class="fw-node producer" cx="320" cy="90" r="11" />
+          <circle class="fw-node producer" cx="140" cy="75" r="10" />
+          <use href="#iconPaw" x="103" y="181" />
+          <use href="#iconPaw" x="207" y="132" />
+          <use href="#iconPaw" x="302" y="171" />
+          <use href="#iconLeaf" x="332" y="79" />
+          <use href="#iconLeaf" x="150" y="63" />
+        </svg>
+        <svg class="zoom-layer layer-c" viewBox="0 0 400 260" aria-hidden="true">
+          <defs>
+            <marker id="zoomflow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="var(--accent-soft)" />
+            </marker>
+          </defs>
+          <line class="fw-link" x1="70" y1="215" x2="150" y2="140" marker-end="url(#zoomflow)" />
+          <line class="fw-link" x1="150" y1="215" x2="150" y2="140" marker-end="url(#zoomflow)" />
+          <line class="fw-link" x1="150" y1="215" x2="255" y2="140" marker-end="url(#zoomflow)" />
+          <line class="fw-link" x1="230" y1="215" x2="255" y2="140" marker-end="url(#zoomflow)" />
+          <line class="fw-link" x1="320" y1="215" x2="255" y2="140" marker-end="url(#zoomflow)" />
+          <line class="fw-link" x1="150" y1="140" x2="200" y2="60" marker-end="url(#zoomflow)" />
+          <line class="fw-link" x1="255" y1="140" x2="200" y2="60" marker-end="url(#zoomflow)" />
+          <circle class="fw-node producer" cx="70" cy="215" r="15" />
+          <circle class="fw-node producer" cx="150" cy="215" r="18" />
+          <circle class="fw-node producer" cx="230" cy="215" r="13" />
+          <circle class="fw-node producer" cx="320" cy="215" r="12" />
+          <circle class="fw-node herbivore" cx="150" cy="140" r="11" />
+          <circle class="fw-node herbivore" cx="255" cy="140" r="10" />
+          <circle class="fw-node predator" cx="200" cy="60" r="8" />
+          <use href="#iconLeaf" x="70" y="193" />
+          <use href="#iconLeaf" x="150" y="193" />
+          <use href="#iconLeaf" x="230" y="193" />
+          <use href="#iconLeaf" x="320" y="193" />
+          <use href="#iconPaw" x="150" y="120" />
+          <use href="#iconPaw" x="255" y="120" />
+          <use href="#iconPaw" x="200" y="40" />
+        </svg>
+      </div>
+      <p class="eq-caption">landscape &rarr; meta-food-web of patches &rarr; food web within a patch</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="eq-float" id="eqf3" style="top:6%; right:4%;"></div>
+  <div class="eq-float" id="eqf4" style="top:60%; left:3%;"></div>
+  <div class="wrap">
+    <span class="eyebrow">About</span>
+    <h2>Remo Ryser</h2>
+
+    <img class="profile-photo" src="images/remo-ryser.jpeg" alt="Portrait of Remo Ryser">
+
+    <p>Hi there! I'm Remo. I am an ecologist who fell in love with theory. I am currently an SNSF Ambizione junior group leader at the Institute of Plant Scineces at the University of Bern. From February 2027, I will start as Assistant Professor, building Network Ecology, a new division at the Institute of Ecology and Evolution.</p>
+
+    <p>During my undergraduate studies I conducted extensive fieldwork at night to understand how artificial light affects plant-pollinator networks. I quickly became fascinated by networks and their structure. Later, during an internship at the Natural History Museum, I worked on modelling phylogenetic trees from molecular and morphological data, and gathered my first experience with bioinformatic and computational tools.</p>
+
+    <p>I then moved to Leipzig for my PhD at <a href="https://www.idiv.de/de/index.html">iDiv</a>, supervised by Uli Brose. There I extended a bioenergetic food-web model into space, incorporating spatially explicit landscapes of patches connected by species-specific dispersal. Using computer simulations, I explored how habitat isolation, patch size, and landscape heterogeneity drive the persistence of species and the stability of meta-food-webs. As a postdoc, I went on to study food-web assembly, spatial scales and processes, and artificial light at night.</p>
+
+    <p>What ties these questions together is a drive to understand the fundamental mechanisms that govern biodiversity and ecological processes — and to make that understanding useful for real decisions about a changing world.</p>
+
+    <p>Despite my love for theory, I remain an ecologist at heart and am endlessly fascinated by nature — astronomy and physics included. Nothing makes me feel freer than swimming in a river, hiking, or skiing in the mountains.</p>
+
+    <img class="wide-photo" src="images/mountains.jpg" alt="Mountains in the Swiss Alps">
+
+    <h2>Selected publications</h2>
+    <ul class="pub-list">
+      <li>Brose, U., Hirt, M. R., <strong>Ryser, R.</strong>, Rosenbaum, B., Berti, E., Gauzens, B., Hein, A., Pawar, S., Schmidt, Wootton, K. L., &amp; Kéfi, S. (2025). Embedding information flows within ecological networks. <em>Nature Ecology &amp; Evolution</em>.</li>
+      <li>Wilkinson, C., Brose, U., Dyer, A., Hirt, M., &amp; <strong>Ryser, R.</strong> (2025). A mechanistic approach to animal dispersal — quantifying energetics and maximum distances. <em>Ecology Letters</em>, 28(2), e70085.</li>
+      <li><strong>Ryser, R.</strong>, Hirt, M. R., Häussler, J., Gravel, D., &amp; Brose, U. (2021). Landscape heterogeneity buffers biodiversity of simulated meta-food-webs under global change through rescue and drainage effects. <em>Nature Communications</em>, 12(1), 4716.</li>
+      <li>Sanders, D., Hirt, M. R., Brose, U., Evans, D. M., Gaston, K. J., Gauzens, B., &amp; <strong>Ryser, R.</strong> (2023). How artificial light at night may rewire ecological networks: concepts and models. <em>Philosophical Transactions of the Royal Society B</em>, 378(1892), 20220368.</li>
+      <li><strong>Ryser, R.</strong>, Häussler, J., Stark, M., Brose, U., Rall, B. C., &amp; Guill, C. (2019). The biggest losers: habitat isolation deconstructs complex food webs from top to bottom. <em>Proceedings of the Royal Society B</em>, 286(1908), 20191177.</li>
+      <li>Knop, E., Zoller, L., <strong>Ryser, R.</strong>, Gerpe, C., Hörler, M., &amp; Fontaine, C. (2017). Artificial light at night as a new threat to pollination. <em>Nature</em>, 548(7666), 206–209.</li>
+    </ul>
+
+    <p style="margin-top:1.4rem;"><a href="https://scholar.google.com/citations?user=PkEpS0cAAAAJ&hl=en">Google Scholar</a> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0002-3771-8986">ORCID</a></p>
+  </div>
+</section>
+
+<section class="block" id="team">
+  <div class="wrap">
+    <span class="eyebrow">Team</span>
+    <h2>People</h2>
+
+    <div class="team-grid" style="margin-top: 2rem;">
+      <div class="person">
+        <img src="images/Leo.jpg" alt="Leonardo Espinosa">
+        <div>
+          <span class="role">PhD student</span>
+          <h3>Leonardo Espinosa</h3>
+          <p>Investigating the context-dependency of biodiversity-ecosystem functioning (BEF) relationships, focusing on how the structure of multi-trophic networks and eutrophication shape these relationships. Combines empirical data from grassland experiments (PaNDiv) with bioenergetic food-web modelling to identify the mechanisms driving BEF variability, including trait-based plant-herbivore interaction networks and their response to nutrient enrichment.</p>
+          <span class="tag">BEF</span><span class="tag">multi-trophic networks</span><span class="tag">eutrophication</span>
         </div>
-    </footer>
-    <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                var path = window.location.pathname;
-                var page = path.split("/").pop();
-                var link = document.getElementById(page.split('.')[0]);
-                if (link) {
-                    link.classList.add('active');
-                }
-            });
-        </script>
+      </div>
+    </div>
+
+    <p style="margin-top: 2.2rem; color: var(--text-muted);">Interested in joining as an MSc or BSc student? Get in touch via the <a href="#contact">contact</a> section below.</p>
+  </div>
+</section>
+
+<section class="block" id="projects">
+  <div class="eq-float" id="eqf5" style="top:10%; right:5%;"></div>
+  <div class="wrap">
+    <span class="eyebrow">Projects</span>
+    <h2>What we work on</h2>
+
+    <div class="proj-group" style="margin-top: 1.4rem;">
+      <div class="proj">
+        <h3>Biodiversity–ecosystem functioning in multitrophic metacommunities</h3>
+        <p class="meta">SNSF Ambizione project, in collaboration with Eric Allan (UniBe)</p>
+        <p>How does biodiversity–ecosystem functioning (BEF) depend on multi-trophic interactions, eutrophication, and spatial processes? We combine empirical data from a large grassland experiment (<a href="https://allanecology.com/projects/pandiv/">PaNDiv</a>) and alpine grasslands with bioenergetic food-web modelling to uncover the mechanisms behind BEF relationships, including trait-based plant-herbivore network structure, the interaction between food-web structure and nutrient availability, the role of space and movement, and how findings scale from experimental plots to real landscapes.</p>
+        <p class="meta">Researchers: Leonardo Espinosa, Remo Ryser &nbsp;·&nbsp; In collaboration with Elisa Thébault, Martin Goßner, Jean-Yves Humbert</p>
+      </div>
+
+      <div class="proj">
+        <h3>sMars — Synthesis of Movement Across Scales</h3>
+        <p>Movement drives species interactions, community composition, and biodiversity patterns across scales — but the geographic scale of biodiversity research rarely matches the scale at which animals actually move. We are developing an empirically informed, unified concept of spatial scale and a mechanistic dispersal model grounded in energy budgets and metabolism, alongside a general movement database.</p>
+        <p class="meta">Researchers: Remo Ryser &nbsp;·&nbsp; In collaboration with Myriam Hirt &nbsp;·&nbsp; <a href="https://www.idiv.de/research/sdiv/working-groups/smars/">sDiv-funded working group</a></p>
+      </div>
+    </div>
+
+    <div class="proj-group">
+      <div class="proj-group-head">
+        <h2 style="font-size:1.15rem; font-family:'Inter',sans-serif; font-weight:600;">Past</h2>
+      </div>
+
+      <div class="proj">
+        <h3>Artificial light at night (ALAN)</h3>
+        <p>Fieldwork on how artificial light impairs plant-pollinator networks, followed by the EcoLux experiment on the iDiv EcoTron platform, measuring ecosystem-wide effects from soil microbes to plants and invertebrates. This work led to a thematic session at BES 2021 and a co-edited theme issue, "Light pollution in complex ecological systems," in Philosophical Transactions of the Royal Society B.</p>
+      </div>
+
+      <div class="proj">
+        <h3>Networks on networks</h3>
+        <p>During my PhD, I extended the allometric trophic network (ATN) model into a spatially explicit meta-food-web by coupling local food-web dynamics across patches through dispersal — including a mechanistic explanation of how habitat heterogeneity fosters biodiversity through the rescue effect and its counterpart, the "drainage effect."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="log-section">
+  <div class="wrap">
+    <span class="eyebrow">Log</span>
+    <div class="log-item"><span class="prompt">&gt;</span><span class="body">2026 — building Network Ecology, a new division at the Institute of Ecology and Evolution, from February 2027.</span></div>
+    <div class="log-item"><span class="prompt">&gt;</span><span class="body">2024 — thematic session, "Dynamical Ecological Networks: connecting topics and approaches," BES 2024.</span></div>
+    <iframe src="https://www.youtube.com/embed/HXFYJvMHO1k" title="Dynamical Ecological Networks, BES 2024" loading="lazy" style="margin-top: 1rem;"></iframe>
+  </div>
+</section>
+
+<section class="block" id="contact" style="border-bottom: none;">
+  <div class="eq-float" id="eqf6" style="top:10%; left:5%;"></div>
+  <div class="wrap">
+    <span class="eyebrow">Contact</span>
+    <h2>Get in touch</h2>
+
+    <div class="contact-block" style="margin-top: 1.6rem;">
+      <p style="margin-bottom:0.6em;"><strong>Remo Ryser</strong></p>
+      <p style="color:var(--text-muted); margin-bottom: 1.2em;">Institute of Ecology and Evolution, University of Bern</p>
+      <a href="mailto:remo.ryser@unibe.ch">remo.ryser@unibe.ch</a><br>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Remo Ryser · Institute of Plant Sciences, University of Bern</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script>
+const floatingEquations = [
+  "\\dot{N} = rN\\left(1-\\dfrac{N}{K}\\right)",
+  "\\dot{P} = eaNP - mP",
+  "f(N) = \\dfrac{aN}{1+ahN}",
+  "B = B_0\\,M^{3/4}",
+  "S = cA^{z}",
+  "\\dot{B}_i = r_iG_iB_i - x_iB_i"
+];
+floatingEquations.forEach((tex, i) => {
+  const el = document.getElementById("eqf" + (i + 1));
+  if (el){
+    katex.render(tex, el, { displayMode: false, throwOnError: false });
+  }
+});
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting){
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: "-40% 0px -55% 0px" });
+
+sections.forEach((s) => observer.observe(s));
+</script>
+
 </body>
 </html>
