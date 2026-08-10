@@ -79,66 +79,10 @@ canvas#plot { display: block; width: 100%; }
 </head>
 <body>
 
-<div class="nav">
-  <h1>Bridging Ecology and Action</h1>
-  <div class="nav-tabs">
-    <button class="nav-tab active" onclick="showView('survey',this)">Survey</button>
-    <button class="nav-tab" onclick="showView('facilitator',this)">Facilitator</button>
-  </div>
-</div>
-
-<!-- SURVEY VIEW -->
-<div id="view-survey" class="view active">
-  <div class="survey-container">
-    <div id="survey-form">
-      <div class="survey-card">
-        <h2>Position yourself</h2>
-        <p>Two quick sliders place you on a map that will appear on the screen at the front. This helps us form diverse breakout groups.</p>
-        <div class="field-row">
-          <div class="field">
-            <label>First name</label>
-            <input type="text" id="fname" placeholder="Anna" autocomplete="given-name" />
-          </div>
-          <div class="field">
-            <label>Last name</label>
-            <input type="text" id="lname" placeholder="Müller" autocomplete="family-name" />
-          </div>
-        </div>
-      </div>
-
-      <div class="survey-card">
-        <div class="slider-section">
-          <div class="slider-label">Research orientation</div>
-          <div class="slider-desc">Where does your work sit — from building theory and models to generating real-world applied outcomes?</div>
-          <input type="range" min="0" max="100" value="50" id="axis1" oninput="updateLabel('axis1','label1')" />
-          <div class="slider-ends"><span>Theoretical</span><span>Empirical</span><span>Applied</span></div>
-          <div class="slider-value" id="label1">Balanced</div>
-        </div>
-        <div class="slider-section" style="margin-bottom:0">
-          <div class="slider-label">Knowledge transfer experience</div>
-          <div class="slider-desc">How confident are you in communicating your research to practitioners, policymakers, or non-academic audiences?</div>
-          <input type="range" min="0" max="100" value="50" id="axis2" oninput="updateLabel('axis2','label2')" />
-          <div class="slider-ends"><span>Little experience</span><span>Some</span><span>Very experienced</span></div>
-          <div class="slider-value" id="label2">Some experience</div>
-        </div>
-      </div>
-
-      <button class="submit-btn" id="submit-btn" onclick="submitSurvey()">Submit my position</button>
-      <div class="error-msg" id="error-msg">Something went wrong — please try again.</div>
-    </div>
-
-    <div id="survey-success" style="display:none">
-      <div class="success-card">
-        <div class="success-icon">✓</div>
-        <h3>Thanks!</h3>
-        <p>Your position has been recorded. Look for yourself on the screen at the front of the room.</p>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="nav"><h1>Bridging Ecology and Action — Facilitator Dashboard</h1></div>
 
 <!-- FACILITATOR VIEW -->
-<div id="view-facilitator" class="view">
+<div id="view-facilitator" class="view active" style="display:block">
   <div class="facilitator-container">
     <div class="dash-header">
       <h2>Live participant map</h2>
@@ -376,6 +320,12 @@ function showView(v, btn) {
     if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
   }
 }
+
+// Auto-start on load
+window.addEventListener('load', () => {
+  fetchParticipants().then(renderAll);
+  pollInterval = setInterval(() => fetchParticipants().then(renderAll), 3000);
+});
 </script>
 </body>
 </html>
