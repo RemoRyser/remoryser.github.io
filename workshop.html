@@ -205,9 +205,13 @@ async function submitSurvey() {
   btn.disabled = true; btn.textContent = 'Submitting…'; err.style.display = 'none';
   try {
     // Upsert by name
-    const res = await fetch(SUPABASE_URL + '/rest/v1/participants?on_conflict=first_name,last_name', {
+    // Delete any existing entry with same name, then insert fresh
+    await fetch(SUPABASE_URL + '/rest/v1/participants?first_name=eq.' + encodeURIComponent(fn) + '&last_name=eq.' + encodeURIComponent(ln), {
+      method: 'DELETE', headers: HEADERS
+    });
+    const res = await fetch(SUPABASE_URL + '/rest/v1/participants', {
       method: 'POST',
-      headers: { ...HEADERS, 'Prefer': 'resolution=merge-duplicates' },
+      headers: { ...HEADERS, 'Prefer': 'return=minimal' },
       body: JSON.stringify({ first_name: fn, last_name: ln, axis1: a1, axis2: a2, group_id: null })
     });
     if (!res.ok) throw new Error(await res.text());
