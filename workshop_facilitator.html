@@ -182,11 +182,59 @@ async function fetchParticipants() {
 
 async function assignGroups() {
   if (participants.length === 0) { alert('No participants yet.'); return; }
-  // Sort by sum of both axes to spread diagonal, then assign round-robin
-  const sorted = [...participants].sort((a,b) => (a.axis1 + a.axis2) - (b.axis1 + b.axis2));
-  const updates = sorted.map((p, i) => ({ id: p.id, group_id: i % 4 }));
+
+  // Quadrant-based diversity assignment:
+  // Split participants into 4 quadrants by median of each axis independently.
+  // Then deal one from each quadrant into each group (like dealing cards),
+  // so every group gets representation across both axes.
+
+  const med1 = [...participants].sort((a,b)=>a.axis1-b.axis1)[Math.floor(participants.length/2)].axis1;
+  const med2 = [...participants].sort((a,b)=>a.axis2-b.axis2)[Math.floor(participants.length/2)].axis2;
+
+  // Q0: low axis1, low axis2  (theoretical + low KT experience)
+  // Q1: low axis1, high axis2 (theoretical + high KT experience)
+  // Q2: high axis1, low axis2 (applied + low KT experience)
+  // Q3: high axis1, high axis2(applied + high KT experience)
+  const quadrants = [[],[],[],[]];
+  participants.forEach(p => {
+    const qx = p.axis1 >= med1 ? 1 : 0;
+    const qy = p.axis2 >= med2 ? 1 : 0;
+    quadrants[qx * 2 + qy].push(p);
+  });
+
+  // Shuffle within each quadrant for fairness
+  quadrants.forEach(q => {
+    for (let i = q.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [q[i], q[j]] = [q[j], q[i]];
+    }
+  });
+
+  // Deal one from each quadrant into each group in rotation
+  // Order of quadrants when dealing: Q0, Q3, Q1, Q2 — diagonally opposite pairs first
+  // so even with small N each group gets maximum contrast
+  const dealOrder = [0, 3, 1, 2];
+  const groupAssignments = participants.map(p => ({ id: p.id, group_id: null }));
+  const groupCounts = [0, 0, 0, 0];
+  let groupIdx = 0;
+
+  // Keep dealing rounds until all quadrants are empty
+  let anyLeft = true;
+  while (anyLeft) {
+    anyLeft = false;
+    for (const qi of dealOrder) {
+      if (quadrants[qi].length > 0) {
+        anyLeft = true;
+        const p = quadrants[qi].shift();
+        const entry = groupAssignments.find(g => g.id === p.id);
+        entry.group_id = groupIdx % 4;
+        groupIdx++;
+      }
+    }
+  }
+
   try {
-    for (const u of updates) {
+    for (const u of groupAssignments) {
       await fetch(SUPABASE_URL + '/rest/v1/participants?id=eq.' + u.id, {
         method: 'PATCH', headers: { ...HEADERS, 'Prefer': 'return=minimal' },
         body: JSON.stringify({ group_id: u.group_id })
