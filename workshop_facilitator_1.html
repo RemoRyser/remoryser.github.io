@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridging Ecology and Action — Workshop Survey</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a18; min-height: 100vh; }
+.view { display: none; min-height: 100vh; }
+.view.active { display: block; }
+
+.nav { background: #2d5a3d; color: white; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+.nav h1 { font-size: 15px; font-weight: 500; }
+.nav-tabs { display: flex; gap: 4px; }
+.nav-tab { background: transparent; border: 1px solid rgba(255,255,255,0.4); color: white; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; }
+.nav-tab.active { background: white; color: #2d5a3d; font-weight: 500; }
+
+.survey-container { max-width: 480px; margin: 0 auto; padding: 24px 16px; }
+.survey-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border: 0.5px solid #e0e0d8; overflow: visible; }
+.survey-card h2 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
+.survey-card p { font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.5; }
+.field-row { display: flex; gap: 10px; margin-bottom: 16px; }
+.field { flex: 1; }
+.field label { display: block; font-size: 12px; color: #666; margin-bottom: 4px; }
+.field input { width: 100%; padding: 8px 10px; border: 0.5px solid #ccc; border-radius: 6px; font-size: 14px; background: white; }
+.field input:focus { outline: none; border-color: #2d5a3d; box-shadow: 0 0 0 2px rgba(45,90,61,0.15); }
+
+.slider-section { margin-bottom: 24px; width: 100%; }
+.slider-label { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+.slider-desc { font-size: 12px; color: #888; margin-bottom: 14px; line-height: 1.4; }
+input[type=range] { width: 100%; accent-color: #2d5a3d; display: block; margin: 8px 0; }
+.slider-ends { display: flex; justify-content: space-between; font-size: 11px; color: #888; margin-top: 4px; width: 100%; }
+
+.slider-value { text-align: center; font-size: 13px; font-weight: 500; color: #2d5a3d; margin-top: 4px; }
+
+.submit-btn { width: 100%; background: #2d5a3d; color: white; border: none; border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 500; cursor: pointer; margin-top: 8px; }
+.submit-btn:hover { background: #234830; }
+.submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+.error-msg { color: #c0392b; font-size: 13px; margin-top: 10px; text-align: center; display: none; }
+
+.success-card { background: white; border-radius: 12px; padding: 40px 24px; text-align: center; border: 0.5px solid #e0e0d8; }
+.success-icon { font-size: 48px; margin-bottom: 12px; }
+.success-card h3 { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+.success-card p { color: #666; font-size: 14px; }
+
+.facilitator-container { padding: 20px; max-width: 1100px; margin: 0 auto; }
+.dash-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+.dash-header h2 { font-size: 18px; font-weight: 500; }
+.stats { display: flex; gap: 12px; flex-wrap: wrap; }
+.stat { background: white; border: 0.5px solid #e0e0d8; border-radius: 8px; padding: 10px 16px; text-align: center; }
+.stat-num { font-size: 22px; font-weight: 500; color: #2d5a3d; }
+.stat-label { font-size: 11px; color: #888; margin-top: 2px; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.assign-btn { background: #2d5a3d; color: white; border: none; border-radius: 8px; padding: 10px 20px; font-size: 14px; font-weight: 500; cursor: pointer; }
+.assign-btn:hover { background: #234830; }
+.reset-btn { background: transparent; color: #c0392b; border: 1px solid #c0392b; border-radius: 8px; padding: 10px 20px; font-size: 14px; cursor: pointer; }
+.reset-btn:hover { background: #fdf2f2; }
+
+.plot-area { background: white; border: 0.5px solid #e0e0d8; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+canvas#plot { display: block; width: 100%; }
+
+.groups-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.group-card { background: white; border: 0.5px solid #e0e0d8; border-radius: 10px; padding: 14px; }
+.group-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.group-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+.group-title { font-size: 14px; font-weight: 500; }
+.group-member { font-size: 13px; color: #444; padding: 4px 0; border-bottom: 0.5px solid #f0f0ec; }
+.group-member:last-child { border-bottom: none; }
+.group-empty { font-size: 12px; color: #aaa; font-style: italic; }
+
+.ptable-wrap { background: white; border: 0.5px solid #e0e0d8; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+.ptable-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ptable-wrap th { background: #f7f7f5; padding: 10px 14px; text-align: left; font-weight: 500; color: #555; font-size: 12px; border-bottom: 0.5px solid #e0e0d8; }
+.ptable-wrap td { padding: 9px 14px; border-bottom: 0.5px solid #f0f0ec; }
+.ptable-wrap tr:last-child td { border-bottom: none; }
+.group-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 500; }
+.status-bar { font-size: 12px; color: #888; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<div class="nav"><h1>Bridging Ecology and Action — Facilitator Dashboard</h1></div>
+
+<!-- FACILITATOR VIEW -->
+<div id="view-facilitator" class="view active" style="display:block">
+  <div class="facilitator-container">
+    <div class="dash-header">
+      <h2>Live participant map</h2>
+      <div class="stats">
+        <div class="stat"><div class="stat-num" id="count-total">0</div><div class="stat-label">Participants</div></div>
+        <div class="stat"><div class="stat-num" id="count-groups">—</div><div class="stat-label">Groups assigned</div></div>
+      </div>
+      <div class="btn-row">
+        <button class="assign-btn" onclick="assignGroups()">Assign groups</button>
+        <button class="reset-btn" onclick="resetAll()">Reset all</button>
+      </div>
+    </div>
+    <div class="status-bar" id="status-bar">Polling for new responses…</div>
+    <div class="plot-area"><canvas id="plot" height="440"></canvas></div>
+    <div class="groups-grid" id="groups-grid" style="display:none"></div>
+    <div class="ptable-wrap" id="ptable-wrap" style="display:none">
+      <table><thead><tr><th>Name</th><th>Research orientation</th><th>KT experience</th><th>Group</th></tr></thead>
+      <tbody id="ptbody"></tbody></table>
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = 'https://llaalpvwomprudjxkyhy.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsYWFscHZ3b21wcnVkanhreWh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODYzNTY3OTcsImV4cCI6MjEwMTkzMjc5N30.e-QPdx5XApuqH1x3WknS-9HIXHsyHvNZugbp0mxHzEI';
+const HEADERS = { 'Content-Type': 'application/json', 'apikey': SUPABASE_KEY, 'Authorization': 'Bearer ' + SUPABASE_KEY };
+
+const GROUP_COLORS = ['#2d5a3d','#c0860a','#1a5276','#7d3c98'];
+const GROUP_BG     = ['#eaf3ee','#fef3d0','#eaf0f9','#f5eef8'];
+const GROUP_TEXT   = ['#1e4028','#6b4a00','#0e3460','#4a1e6a'];
+const GROUP_NAMES  = ['Group A','Group B','Group C','Group D'];
+
+let participants = [];
+let pollInterval = null;
+let groupsAssigned = false;
+
+function axis1Label(v) {
+  if (v < 20) return 'Strongly theoretical';
+  if (v < 40) return 'Mostly theoretical';
+  if (v < 60) return 'Balanced';
+  if (v < 80) return 'Mostly applied';
+  return 'Strongly applied';
+}
+function axis2Label(v) {
+  if (v < 20) return 'Little experience';
+  if (v < 40) return 'Some experience';
+  if (v < 60) return 'Moderate experience';
+  if (v < 80) return 'Experienced';
+  return 'Very experienced';
+}
+function updateLabel(sliderId, labelId) {
+  const v = parseInt(document.getElementById(sliderId).value);
+  document.getElementById(labelId).textContent = sliderId === 'axis1' ? axis1Label(v) : axis2Label(v);
+}
+
+async function submitSurvey() {
+  const fn = document.getElementById('fname').value.trim();
+  const ln = document.getElementById('lname').value.trim();
+  if (!fn || !ln) { alert('Please enter your first and last name.'); return; }
+  const a1 = parseInt(document.getElementById('axis1').value);
+  const a2 = parseInt(document.getElementById('axis2').value);
+  const btn = document.getElementById('submit-btn');
+  const err = document.getElementById('error-msg');
+  btn.disabled = true; btn.textContent = 'Submitting…'; err.style.display = 'none';
+  try {
+    // Upsert by name
+    // Delete any existing entry with same name, then insert fresh
+    await fetch(SUPABASE_URL + '/rest/v1/participants?first_name=eq.' + encodeURIComponent(fn) + '&last_name=eq.' + encodeURIComponent(ln), {
+      method: 'DELETE', headers: HEADERS
+    });
+    const res = await fetch(SUPABASE_URL + '/rest/v1/participants', {
+      method: 'POST',
+      headers: { ...HEADERS, 'Prefer': 'return=minimal' },
+      body: JSON.stringify({ first_name: fn, last_name: ln, axis1: a1, axis2: a2, group_id: null })
+    });
+    if (!res.ok) throw new Error(await res.text());
+    document.getElementById('survey-form').style.display = 'none';
+    document.getElementById('survey-success').style.display = 'block';
+  } catch(e) {
+    console.error(e);
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Submit my position';
+  }
+}
+
+async function fetchParticipants() {
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/participants?select=*&order=created_at.asc', { headers: HEADERS });
+    if (!res.ok) throw new Error(await res.text());
+    participants = await res.json();
+    groupsAssigned = participants.some(p => p.group_id !== null);
+    document.getElementById('status-bar').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+  } catch(e) {
+    document.getElementById('status-bar').textContent = 'Connection error — retrying…';
+  }
+}
+
+async function assignGroups() {
+  if (participants.length === 0) { alert('No participants yet.'); return; }
+
+  // Rank-based diversity assignment:
+  // Assign each participant a rank on each axis independently (1..n).
+  // Zone = 2 * I[rank_x > n/2] + I[rank_y > n/2]
+  // This guarantees exactly floor(n/4) or ceil(n/4) members per zone
+  // regardless of how values cluster — no boundary pile-up possible.
+  // Then deal one from each zone into each group (diagonally opposite zones first).
+
+  const n = participants.length;
+
+  // Compute ranks on each axis (1-indexed). Ties broken randomly via shuffle before sorting.
+  const shuffled = [...participants].sort(() => Math.random() - 0.5);
+  const byX = [...shuffled].sort((a,b) => a.axis1 - b.axis1);
+  const byY = [...shuffled].sort((a,b) => a.axis2 - b.axis2);
+
+  const rankX = new Map(); byX.forEach((p,i) => rankX.set(p.id, i + 1));
+  const rankY = new Map(); byY.forEach((p,i) => rankY.set(p.id, i + 1));
+
+  // Assign zone: 0=low-low, 1=low-high, 2=high-low, 3=high-high
+  const zones = [[],[],[],[]];
+  participants.forEach(p => {
+    const zx = rankX.get(p.id) > n / 2 ? 1 : 0;
+    const zy = rankY.get(p.id) > n / 2 ? 1 : 0;
+    zones[zx * 2 + zy].push(p);
+  });
+
+  // Shuffle within zones (ties already broken above, but shuffle for variety)
+  zones.forEach(z => {
+    for (let i = z.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [z[i], z[j]] = [z[j], z[i]];
+    }
+  });
+
+  // Deal into groups: for each group, take one person from each zone in turn.
+  // This guarantees every group has one member from each quadrant (zone),
+  // maximising spread of positions within each group.
+  // Zone order: 0=low-low, 3=high-high, 1=low-high, 2=high-low
+  // (diagonally opposite pairs) so even if zones run out early,
+  // the first members assigned to each group are maximally contrasting.
+  const dealOrder = [0, 3, 1, 2];
+  const groupAssignments = participants.map(p => ({ id: p.id, group_id: null }));
+  let currentGroup = 0;
+  let anyLeft = true;
+  while (anyLeft) {
+    anyLeft = false;
+    // For each zone, give one person to the current group, then move to next group
+    for (const zi of dealOrder) {
+      if (zones[zi].length > 0) {
+        anyLeft = true;
+        const p = zones[zi].shift();
+        groupAssignments.find(g => g.id === p.id).group_id = currentGroup;
+      }
+    }
+    // Only advance to next group after all zones have contributed one person
+    if (anyLeft) currentGroup = (currentGroup + 1) % 4;
+  }
+
+  try {
+    for (const u of groupAssignments) {
+      await fetch(SUPABASE_URL + '/rest/v1/participants?id=eq.' + u.id, {
+        method: 'PATCH', headers: { ...HEADERS, 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ group_id: u.group_id })
+      });
+    }
+    await fetchParticipants();
+    renderAll();
+  } catch(e) { alert('Error assigning groups: ' + e.message); }
+}
+
+async function resetAll() {
+  if (!confirm('Delete all participant data? This cannot be undone.')) return;
+  try {
+    await fetch(SUPABASE_URL + '/rest/v1/participants?id=neq.00000000-0000-0000-0000-000000000000', {
+      method: 'DELETE', headers: HEADERS
+    });
+    participants = []; groupsAssigned = false;
+    document.getElementById('groups-grid').style.display = 'none';
+    document.getElementById('ptable-wrap').style.display = 'none';
+    renderAll();
+  } catch(e) { alert('Error: ' + e.message); }
+}
+
+function renderAll() {
+  document.getElementById('count-total').textContent = participants.length;
+  document.getElementById('count-groups').textContent = groupsAssigned ? '4' : '—';
+  drawPlot();
+  if (groupsAssigned) { renderGroups(); renderTable(); }
+}
+
+function drawPlot() {
+  const canvas = document.getElementById('plot');
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.parentElement.clientWidth - 40;
+  const H = 440;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+  const pad = { top: 30, right: 40, bottom: 54, left: 64 };
+  const pw = W - pad.left - pad.right;
+  const ph = H - pad.top - pad.bottom;
+
+  // Grid lines
+  ctx.strokeStyle = '#ebebE8'; ctx.lineWidth = 0.5;
+  [0,25,50,75,100].forEach(v => {
+    const x = pad.left + (v/100)*pw; const y = pad.top + (1-v/100)*ph;
+    ctx.beginPath(); ctx.moveTo(x,pad.top); ctx.lineTo(x,pad.top+ph); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+pw,y); ctx.stroke();
+  });
+
+  // Midlines dashed
+  ctx.setLineDash([4,4]); ctx.strokeStyle='#ccc'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.left+pw/2,pad.top); ctx.lineTo(pad.left+pw/2,pad.top+ph); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.left,pad.top+ph/2); ctx.lineTo(pad.left+pw,pad.top+ph/2); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Axes
+  ctx.strokeStyle='#bbb'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(pad.left,pad.top+ph); ctx.lineTo(pad.left+pw,pad.top+ph); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(pad.left,pad.top); ctx.lineTo(pad.left,pad.top+ph); ctx.stroke();
+
+  // X axis labels
+  ctx.fillStyle='#888'; ctx.font='12px system-ui'; ctx.textAlign='center';
+  ctx.fillText('Theoretical', pad.left+pw*0.08, pad.top+ph+36);
+  ctx.fillText('Empirical',   pad.left+pw*0.5,  pad.top+ph+36);
+  ctx.fillText('Applied',     pad.left+pw*0.92, pad.top+ph+36);
+  ctx.fillText('← Research orientation →', pad.left+pw/2, pad.top+ph+50);
+
+  // Y axis label
+  ctx.save(); ctx.translate(14, pad.top+ph/2); ctx.rotate(-Math.PI/2);
+  ctx.textAlign='center'; ctx.fillText('← Knowledge transfer experience →', 0, 0);
+  ctx.restore();
+  ctx.fillStyle='#aaa'; ctx.font='11px system-ui'; ctx.textAlign='right';
+  ctx.fillText('Low', pad.left-8, pad.top+ph+4);
+  ctx.fillText('High', pad.left-8, pad.top+6);
+
+  // Points
+  if (participants.length === 0) {
+    ctx.fillStyle='#bbb'; ctx.font='14px system-ui'; ctx.textAlign='center';
+    ctx.fillText('Waiting for participants…', pad.left+pw/2, pad.top+ph/2);
+    return;
+  }
+  participants.forEach(p => {
+    const x = pad.left + (p.axis1/100)*pw;
+    const y = pad.top + (1-p.axis2/100)*ph;
+    const color = p.group_id !== null ? GROUP_COLORS[p.group_id] : '#2d5a3d';
+    ctx.beginPath(); ctx.arc(x,y,8,0,Math.PI*2);
+    ctx.fillStyle = p.group_id !== null ? color : 'white';
+    ctx.strokeStyle = color; ctx.lineWidth=2.5;
+    ctx.fill(); ctx.stroke();
+    ctx.fillStyle='#222'; ctx.font='11px system-ui'; ctx.textAlign='left';
+    ctx.fillText(p.first_name + ' ' + p.last_name[0] + '.', x+12, y+4);
+  });
+}
+
+function renderGroups() {
+  const grid = document.getElementById('groups-grid');
+  grid.style.display = 'grid'; grid.innerHTML = '';
+  GROUP_NAMES.forEach((name, gi) => {
+    const members = participants.filter(p => p.group_id === gi);
+    const card = document.createElement('div'); card.className = 'group-card';
+    card.innerHTML = `<div class="group-header"><div class="group-dot" style="background:${GROUP_COLORS[gi]}"></div><div class="group-title">${name}</div></div>`;
+    if (!members.length) { card.innerHTML += `<div class="group-empty">No members yet</div>`; }
+    else members.forEach(p => { card.innerHTML += `<div class="group-member">${p.first_name} ${p.last_name}</div>`; });
+    grid.appendChild(card);
+  });
+}
+
+function renderTable() {
+  const wrap = document.getElementById('ptable-wrap'); wrap.style.display='block';
+  const tbody = document.getElementById('ptbody'); tbody.innerHTML='';
+  [...participants].sort((a,b)=>a.last_name.localeCompare(b.last_name)).forEach(p => {
+    const badge = p.group_id !== null
+      ? `<span class="group-badge" style="background:${GROUP_BG[p.group_id]};color:${GROUP_TEXT[p.group_id]}">${GROUP_NAMES[p.group_id]}</span>`
+      : '<span style="color:#bbb">—</span>';
+    tbody.innerHTML += `<tr><td>${p.first_name} ${p.last_name}</td><td>${axis1Label(p.axis1)}</td><td>${axis2Label(p.axis2)}</td><td>${badge}</td></tr>`;
+  });
+}
+
+function showView(v, btn) {
+  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  btn.classList.add('active');
+  if (v === 'facilitator') {
+    fetchParticipants().then(renderAll);
+    if (!pollInterval) pollInterval = setInterval(() => fetchParticipants().then(renderAll), 3000);
+  } else {
+    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+  }
+}
+
+// Auto-start on load
+window.addEventListener('load', () => {
+  fetchParticipants().then(renderAll);
+  pollInterval = setInterval(() => fetchParticipants().then(renderAll), 3000);
+});
+</script>
+</body>
+</html>
