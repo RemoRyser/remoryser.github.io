@@ -17,7 +17,7 @@ body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a18; 
 .nav-tab.active { background: white; color: #2d5a3d; font-weight: 500; }
 
 .survey-container { max-width: 480px; margin: 0 auto; padding: 24px 16px; }
-.survey-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border: 0.5px solid #e0e0d8; }
+.survey-card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 16px; border: 0.5px solid #e0e0d8; overflow: visible; }
 .survey-card h2 { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
 .survey-card p { font-size: 13px; color: #666; margin-bottom: 20px; line-height: 1.5; }
 .field-row { display: flex; gap: 10px; margin-bottom: 16px; }
@@ -26,11 +26,12 @@ body { font-family: system-ui, sans-serif; background: #f5f5f3; color: #1a1a18; 
 .field input { width: 100%; padding: 8px 10px; border: 0.5px solid #ccc; border-radius: 6px; font-size: 14px; background: white; }
 .field input:focus { outline: none; border-color: #2d5a3d; box-shadow: 0 0 0 2px rgba(45,90,61,0.15); }
 
-.slider-section { margin-bottom: 24px; }
+.slider-section { margin-bottom: 24px; width: 100%; }
 .slider-label { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
 .slider-desc { font-size: 12px; color: #888; margin-bottom: 14px; line-height: 1.4; }
-.slider-track input[type=range] { width: 100%; accent-color: #2d5a3d; }
-.slider-ends { display: flex; justify-content: space-between; font-size: 11px; color: #888; margin-top: 2px; }
+input[type=range] { width: 100%; accent-color: #2d5a3d; display: block; margin: 8px 0; }
+.slider-ends { display: flex; justify-content: space-between; font-size: 11px; color: #888; margin-top: 4px; width: 100%; }
+
 .slider-value { text-align: center; font-size: 13px; font-weight: 500; color: #2d5a3d; margin-top: 4px; }
 
 .submit-btn { width: 100%; background: #2d5a3d; color: white; border: none; border-radius: 8px; padding: 13px; font-size: 15px; font-weight: 500; cursor: pointer; margin-top: 8px; }
@@ -183,51 +184,52 @@ async function fetchParticipants() {
 async function assignGroups() {
   if (participants.length === 0) { alert('No participants yet.'); return; }
 
-  // Quadrant-based diversity assignment:
-  // Split participants into 4 quadrants by median of each axis independently.
-  // Then deal one from each quadrant into each group (like dealing cards),
-  // so every group gets representation across both axes.
+  // Rank-based diversity assignment:
+  // Assign each participant a rank on each axis independently (1..n).
+  // Zone = 2 * I[rank_x > n/2] + I[rank_y > n/2]
+  // This guarantees exactly floor(n/4) or ceil(n/4) members per zone
+  // regardless of how values cluster — no boundary pile-up possible.
+  // Then deal one from each zone into each group (diagonally opposite zones first).
 
-  const med1 = [...participants].sort((a,b)=>a.axis1-b.axis1)[Math.floor(participants.length/2)].axis1;
-  const med2 = [...participants].sort((a,b)=>a.axis2-b.axis2)[Math.floor(participants.length/2)].axis2;
+  const n = participants.length;
 
-  // Q0: low axis1, low axis2  (theoretical + low KT experience)
-  // Q1: low axis1, high axis2 (theoretical + high KT experience)
-  // Q2: high axis1, low axis2 (applied + low KT experience)
-  // Q3: high axis1, high axis2(applied + high KT experience)
-  const quadrants = [[],[],[],[]];
+  // Compute ranks on each axis (1-indexed). Ties broken randomly via shuffle before sorting.
+  const shuffled = [...participants].sort(() => Math.random() - 0.5);
+  const byX = [...shuffled].sort((a,b) => a.axis1 - b.axis1);
+  const byY = [...shuffled].sort((a,b) => a.axis2 - b.axis2);
+
+  const rankX = new Map(); byX.forEach((p,i) => rankX.set(p.id, i + 1));
+  const rankY = new Map(); byY.forEach((p,i) => rankY.set(p.id, i + 1));
+
+  // Assign zone: 0=low-low, 1=low-high, 2=high-low, 3=high-high
+  const zones = [[],[],[],[]];
   participants.forEach(p => {
-    const qx = p.axis1 >= med1 ? 1 : 0;
-    const qy = p.axis2 >= med2 ? 1 : 0;
-    quadrants[qx * 2 + qy].push(p);
+    const zx = rankX.get(p.id) > n / 2 ? 1 : 0;
+    const zy = rankY.get(p.id) > n / 2 ? 1 : 0;
+    zones[zx * 2 + zy].push(p);
   });
 
-  // Shuffle within each quadrant for fairness
-  quadrants.forEach(q => {
-    for (let i = q.length - 1; i > 0; i--) {
+  // Shuffle within zones (ties already broken above, but shuffle for variety)
+  zones.forEach(z => {
+    for (let i = z.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [q[i], q[j]] = [q[j], q[i]];
+      [z[i], z[j]] = [z[j], z[i]];
     }
   });
 
-  // Deal one from each quadrant into each group in rotation
-  // Order of quadrants when dealing: Q0, Q3, Q1, Q2 — diagonally opposite pairs first
-  // so even with small N each group gets maximum contrast
+  // Deal into groups: alternate diagonally opposite zones (0,3,1,2)
+  // so each group receives maximum contrast even at low n
   const dealOrder = [0, 3, 1, 2];
   const groupAssignments = participants.map(p => ({ id: p.id, group_id: null }));
-  const groupCounts = [0, 0, 0, 0];
   let groupIdx = 0;
-
-  // Keep dealing rounds until all quadrants are empty
   let anyLeft = true;
   while (anyLeft) {
     anyLeft = false;
-    for (const qi of dealOrder) {
-      if (quadrants[qi].length > 0) {
+    for (const zi of dealOrder) {
+      if (zones[zi].length > 0) {
         anyLeft = true;
-        const p = quadrants[qi].shift();
-        const entry = groupAssignments.find(g => g.id === p.id);
-        entry.group_id = groupIdx % 4;
+        const p = zones[zi].shift();
+        groupAssignments.find(g => g.id === p.id).group_id = groupIdx % 4;
         groupIdx++;
       }
     }
