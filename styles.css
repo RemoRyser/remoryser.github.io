@@ -327,8 +327,6 @@ iframe{
 
 .pub-list li:first-child{ border-top: none; }
 
-.pub-list strong{ color: var(--text); font-weight: 600; }
-
 .pubs{
   margin-top: 3.6rem;
   padding-top: 2.6rem;
