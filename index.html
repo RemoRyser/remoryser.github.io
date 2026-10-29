@@ -5,18 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Network Ecology, University of Bern</title>
 <meta name="description" content="Mechanistic, trait-based models of trophic and spatial networks: theory that forecasts real biodiversity change.">
-<meta name="theme-color" content="#090f0c">
+<meta name="theme-color" content="#f6f4ec">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Network Ecology, University of Bern">
 <meta property="og:description" content="Mechanistic, trait-based models of trophic and spatial networks: theory that forecasts real biodiversity change.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23090f0c'/%3E%3Cpath d='M8 22L14 12L24 17M14 12L17 6' stroke='%235f8d52' stroke-width='1.6' fill='none'/%3E%3Ccircle cx='8' cy='22' r='2.6' fill='%23bfd96a'/%3E%3Ccircle cx='14' cy='12' r='3.2' fill='%23bfd96a'/%3E%3Ccircle cx='24' cy='17' r='2.6' fill='%23ff7f5c'/%3E%3Ccircle cx='17' cy='6' r='2' fill='%233fb8a5'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23246c2a'/%3E%3Cpath d='M8 22L14 12L24 17M14 12L17 6' stroke='%23cfe5cb' stroke-width='1.6' fill='none'/%3E%3Ccircle cx='8' cy='22' r='2.6' fill='%23f6f4ec'/%3E%3Ccircle cx='14' cy='12' r='3.2' fill='%23f6f4ec'/%3E%3Ccircle cx='24' cy='17' r='2.6' fill='%23d08d3c'/%3E%3Ccircle cx='17' cy='6' r='2' fill='%235b99a6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<!-- Calibri where installed; Carlito (metric-compatible, open licence) as web fallback -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/carlito@5.3.0/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/carlito@5.3.0/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/carlito@5.3.0/400-italic.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/carlito@5.3.0/700-italic.css">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="org-moth" viewBox="0 0 48 48">
+      <ellipse cx="24" cy="26" rx="2" ry="9"/>
+      <path d="M24,22 C16,10 5,12 4,20 C4,27 14,28 24,26"/><path d="M24,22 C32,10 43,12 44,20 C44,27 34,28 24,26"/>
+      <path d="M24,27 C16,28 10,36 14,40 C18,42 23,36 24,30"/><path d="M24,27 C32,28 38,36 34,40 C30,42 25,36 24,30"/>
+      <path d="M23,17 C21,12 18,10 16,9"/><path d="M25,17 C27,12 30,10 32,9"/>
+    </symbol>
+    <symbol id="org-bee" viewBox="0 0 48 48">
+      <circle cx="24" cy="14" r="4"/><ellipse cx="24" cy="29" rx="7.5" ry="11"/>
+      <path d="M16.6,26 H31.4 M16.5,31 H31.5 M18,36 H30"/>
+      <ellipse cx="13" cy="21" rx="8" ry="4" transform="rotate(-28 13 21)"/><ellipse cx="35" cy="21" rx="8" ry="4" transform="rotate(28 35 21)"/>
+      <path d="M22,10 L19,6 M26,10 L29,6"/>
+    </symbol>
+    <symbol id="org-beetle" viewBox="0 0 48 48">
+      <path d="M19,12 Q24,6 29,12"/><ellipse cx="24" cy="28" rx="10" ry="14"/><path d="M24,15 V42"/>
+      <path d="M14.5,22 L7,19 M14,29 L6,30 M15,36 L8,41 M33.5,22 L41,19 M34,29 L42,30 M33,36 L40,41"/>
+      <path d="M21,9 L18,4 M27,9 L30,4"/>
+    </symbol>
+    <symbol id="org-flower" viewBox="0 0 48 48">
+      <circle cx="24" cy="18" r="3"/>
+      <g><ellipse cx="24" cy="9" rx="3.6" ry="6"/><ellipse cx="24" cy="9" rx="3.6" ry="6" transform="rotate(72 24 18)"/><ellipse cx="24" cy="9" rx="3.6" ry="6" transform="rotate(144 24 18)"/><ellipse cx="24" cy="9" rx="3.6" ry="6" transform="rotate(216 24 18)"/><ellipse cx="24" cy="9" rx="3.6" ry="6" transform="rotate(288 24 18)"/></g>
+      <path d="M24,28 V46"/><path d="M24,38 C30,32 36,34 36,34 C36,40 30,42 24,38"/>
+    </symbol>
+    <symbol id="org-grass" viewBox="0 0 48 48">
+      <path d="M24,45 C24,31 20,18 14,8"/><path d="M24,45 C25,31 28,20 34,10"/><path d="M24,45 C24,33 24,22 24,5"/>
+      <path d="M20,45 C18,37 12,31 8,27"/><path d="M28,45 C30,37 36,33 40,31"/>
+    </symbol>
+    <symbol id="org-tree" viewBox="0 0 48 48">
+      <circle cx="24" cy="17" r="10"/><circle cx="14.5" cy="25" r="7"/><circle cx="33.5" cy="25" r="7"/>
+      <path d="M24,30 V45"/><path d="M24,39 L18,33 M24,36 L30,30"/>
+    </symbol>
+    <symbol id="org-lynx" viewBox="0 0 48 48">
+      <path d="M12,22 L14,7 L22,14"/><path d="M36,22 L34,7 L26,14"/><path d="M14,7 L13,2 M34,7 L35,2"/>
+      <path d="M12,22 C10,33 16,42 24,42 C32,42 38,33 36,22 C32,16 16,16 12,22 Z"/>
+      <circle cx="19" cy="26" r="1.2"/><circle cx="29" cy="26" r="1.2"/><path d="M22,32 L26,32 L24,35 Z"/>
+      <path d="M11.5,30 L6,32 M12,34 L6,38 M36.5,30 L42,32 M36,34 L42,38"/>
+    </symbol>
+    <symbol id="org-cater" viewBox="0 0 48 48">
+      <circle cx="9" cy="34" r="4"/><circle cx="16" cy="29" r="4.6"/><circle cx="24" cy="26" r="5"/><circle cx="32" cy="27" r="5"/><circle cx="39" cy="22" r="5.4"/>
+      <path d="M41,17 L43,12 M37,17 L35,12"/><path d="M16,34 V38 M24,31 V36 M32,32 V37"/>
+    </symbol>
+  </defs>
+</svg>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -34,6 +82,10 @@
 
 <header class="hero" id="top">
   <div class="eq-float" id="eqf1" style="top:14%; right:6%;"></div>
+  <div class="eq-float eq-sm" id="eqf7" style="bottom:9%;right:5%;"></div>
+  <span class="org-float" style="top:36%;right:3%;--s:46px;--d:24s;--dx:-14px;--dy:18px;--r0:14deg;--r1:-8deg;animation-delay:-6s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
+  <span class="org-float" style="top:44%;left:1.5%;--s:56px;--d:28s;--dx:22px;--dy:-20px;--r0:-12deg;--r1:8deg;animation-delay:-3s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-moth"/></svg></span>
+  <span class="org-float" style="top:16%;right:32%;--s:44px;--d:22s;--dx:26px;--dy:18px;--r0:10deg;--r1:-14deg;animation-delay:-9s;"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
   <svg class="hero-net" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <path class="edge" d="M120,380 L300,220" />
     <path class="edge pulse" d="M300,220 L520,300" />
@@ -69,6 +121,11 @@
 
 <section class="block">
   <div class="eq-float" id="eqf2" style="top:8%; left:4%;"></div>
+  <div class="eq-float eq-sm eq-wide" id="eqf8" style="bottom:4%;right:1.5%;"></div>
+  <span class="org-float" style="top:10%;right:4%;--s:56px;--d:33s;--dx:-12px;--dy:14px;--r0:6deg;--r1:-6deg;animation-delay:-13s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-lynx"/></svg></span>
+  <span class="org-float" style="bottom:1%;right:36%;--s:50px;--d:27s;--dx:18px;--dy:-10px;--r0:-6deg;--r1:8deg;animation-delay:-4s;"><svg viewBox="0 0 48 48"><use href="#org-cater"/></svg></span>
+  <span class="org-float" style="top:64%;right:2%;--s:50px;--d:24s;--dx:-18px;--dy:-24px;--r0:-10deg;--r1:12deg;animation-delay:-5s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
+  <span class="org-float" style="bottom:5%;left:7%;--s:58px;--d:30s;--dx:10px;--dy:-14px;--r0:-4deg;--r1:5deg;animation-delay:-11s;"><svg viewBox="0 0 48 48"><use href="#org-grass"/></svg></span>
   <div class="wide approach">
     <div>
       <span class="eyebrow">Approach</span>
@@ -155,7 +212,7 @@
           <use href="#iconPaw" x="200" y="40" />
         </svg>
       </div>
-      <p class="eq-caption">landscape &rarr; meta-food-web of patches &rarr; food web within a patch</p>
+      <p class="eq-caption" id="zoomCaption"><button type="button" data-z="0">landscape</button> <span aria-hidden="true">&rarr;</span> <button type="button" data-z="1">meta-food-web of patches</button> <span aria-hidden="true">&rarr;</span> <button type="button" data-z="2">food web within a patch</button></p>
     </div>
   </div>
 </section>
@@ -163,6 +220,15 @@
 <section class="block" id="about">
   <div class="eq-float" id="eqf3" style="top:6%; right:4%;"></div>
   <div class="eq-float" id="eqf4" style="top:60%; left:3%;"></div>
+  <div class="eq-float eq-sm eq-wide" id="eqf9" style="top:30%;left:2%;"></div>
+  <div class="eq-float eq-sm eq-wide" id="eqf10" style="top:84%;right:2%;"></div>
+  <span class="org-float" style="top:18%;left:1.5%;--s:50px;--d:30s;--dx:12px;--dy:-16px;--r0:-7deg;--r1:8deg;animation-delay:-2s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
+  <span class="org-float" style="top:48%;right:3%;--s:48px;--d:26s;--dx:-16px;--dy:-18px;--r0:10deg;--r1:-12deg;animation-delay:-9s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
+  <span class="org-float" style="top:72%;left:2.5%;--s:46px;--d:22s;--dx:20px;--dy:-14px;--r0:-12deg;--r1:12deg;animation-delay:-15s;"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
+  <span class="org-float" style="top:92%;left:9%;--s:54px;--d:31s;--dx:8px;--dy:-12px;--r0:-4deg;--r1:5deg;animation-delay:-7s;"><svg viewBox="0 0 48 48"><use href="#org-grass"/></svg></span>
+  <span class="org-float" style="top:6%;left:7%;--s:52px;--d:34s;--dx:14px;--dy:12px;--r0:-6deg;--r1:6deg;animation-delay:-17s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-lynx"/></svg></span>
+  <span class="org-float" style="top:32%;right:1.5%;--s:58px;--d:27s;--dx:-24px;--dy:20px;--r0:8deg;--r1:-12deg;animation-delay:-7s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-moth"/></svg></span>
+  <span class="org-float" style="bottom:3%;right:6%;--s:66px;--d:34s;--dx:-14px;--dy:-12px;--r0:-3deg;--r1:4deg;animation-delay:-14s;"><svg viewBox="0 0 48 48"><use href="#org-tree"/></svg></span>
   <div class="wrap">
     <span class="eyebrow">About</span>
     <h2>About the group</h2>
@@ -172,7 +238,7 @@
 
       <p>Our work is theory-led and mechanistic. We build models from individual traits and metabolism up to food webs and whole landscapes, and confront them with empirical data, from grassland experiments to movement data. Current themes include meta-food-webs and dispersal, biodiversity&ndash;ecosystem functioning, movement across scales, and the effects of artificial light at night.</p>
 
-      <p>The aim is to turn first-principles theory into forecasts that can inform real decisions in a changing world. We collaborate widely and are building a team of PhD students, postdocs and senior researchers (see <a href="#team">People</a>).</p>
+      <p>The aim is to turn first-principles theory into forecasts that can inform real decisions in a changing world. We are open to collaborations, and we are a growing, international team of PhD students, postdocs and senior researchers (see <a href="#team">People</a>).</p>
     </div>
 
     <img class="wide-photo" src="images/mountains.jpg" alt="Mountains in the Swiss Alps" loading="lazy" decoding="async">
@@ -191,6 +257,7 @@
           <span class="role">Group leader</span>
           <h3>Remo Ryser</h3>
           <p>Develops mechanistic, trait-based models of food webs and spatial networks, from individual energetics up to meta-food-webs, to understand and forecast how biodiversity responds to change. Leads the group and is building the Network Ecology division in Bern.</p>
+          <p class="person-links"><a href="https://scholar.google.com/citations?user=PkEpS0cAAAAJ&amp;hl=en">Google Scholar</a> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0002-3771-8986">ORCID</a></p>
           <span class="tag">food-web models</span><span class="tag">meta-food-webs</span><span class="tag">movement</span><span class="tag">ALAN</span>
         </div>
       </div>
@@ -231,30 +298,30 @@
     </div>
 
     <p class="team-note">Interested in joining as an MSc or BSc student, or in one of the positions above? Get in touch via the <a href="#contact">contact</a> section below.</p>
-
-    <div class="pubs">
-      <h2>Selected publications</h2>
-      <ul class="pub-list">
-        <li>Brose, U., Hirt, M. R., Ryser, R., Rosenbaum, B., Berti, E., Gauzens, B., Hein, A., Pawar, S., Schmidt, Wootton, K. L., &amp; Kéfi, S. (2025). Embedding information flows within ecological networks. <em>Nature Ecology &amp; Evolution</em>.</li>
-        <li>Wilkinson, C., Brose, U., Dyer, A., Hirt, M., &amp; Ryser, R. (2025). A mechanistic approach to animal dispersal — quantifying energetics and maximum distances. <em>Ecology Letters</em>, 28(2), e70085.</li>
-        <li>Ryser, R., Hirt, M. R., Häussler, J., Gravel, D., &amp; Brose, U. (2021). Landscape heterogeneity buffers biodiversity of simulated meta-food-webs under global change through rescue and drainage effects. <em>Nature Communications</em>, 12(1), 4716.</li>
-        <li>Sanders, D., Hirt, M. R., Brose, U., Evans, D. M., Gaston, K. J., Gauzens, B., &amp; Ryser, R. (2023). How artificial light at night may rewire ecological networks: concepts and models. <em>Philosophical Transactions of the Royal Society B</em>, 378(1892), 20220368.</li>
-        <li>Ryser, R., Häussler, J., Stark, M., Brose, U., Rall, B. C., &amp; Guill, C. (2019). The biggest losers: habitat isolation deconstructs complex food webs from top to bottom. <em>Proceedings of the Royal Society B</em>, 286(1908), 20191177.</li>
-        <li>Knop, E., Zoller, L., Ryser, R., Gerpe, C., Hörler, M., &amp; Fontaine, C. (2017). Artificial light at night as a new threat to pollination. <em>Nature</em>, 548(7666), 206–209.</li>
-      </ul>
-
-      <p class="links-line">Remo Ryser: <a href="https://scholar.google.com/citations?user=PkEpS0cAAAAJ&amp;hl=en">Google Scholar</a> &nbsp;·&nbsp; <a href="https://orcid.org/0000-0002-3771-8986">ORCID</a></p>
-    </div>
   </div>
 </section>
 
 <section class="block" id="projects">
   <div class="eq-float" id="eqf5" style="top:10%; right:5%;"></div>
+  <div class="eq-float eq-sm eq-wide" id="eqf11" style="top:34%;right:1.5%;"></div>
+  <div class="eq-float eq-sm" id="eqf12" style="top:70%;left:1.5%;"></div>
+  <span class="org-float" style="top:24%;left:2.5%;--s:54px;--d:27s;--dx:18px;--dy:-14px;--r0:-10deg;--r1:10deg;animation-delay:-5s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-moth"/></svg></span>
+  <span class="org-float" style="top:60%;right:5%;--s:62px;--d:35s;--dx:-12px;--dy:-10px;--r0:-3deg;--r1:4deg;animation-delay:-16s;"><svg viewBox="0 0 48 48"><use href="#org-tree"/></svg></span>
+  <span class="org-float" style="top:90%;left:6%;--s:48px;--d:28s;--dx:20px;--dy:-10px;--r0:-6deg;--r1:7deg;animation-delay:-3s;"><svg viewBox="0 0 48 48"><use href="#org-cater"/></svg></span>
+  <span class="org-float" style="top:46%;left:1.5%;--s:62px;--d:31s;--dx:18px;--dy:-16px;--r0:-6deg;--r1:7deg;animation-delay:-4s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-lynx"/></svg></span>
+  <span class="org-float" style="top:80%;right:3.5%;--s:50px;--d:25s;--dx:-16px;--dy:-22px;--r0:12deg;--r1:-10deg;animation-delay:-12s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
   <div class="wrap">
     <span class="eyebrow">Projects</span>
     <h2>What we work on</h2>
 
     <div class="proj-group" style="margin-top: 1.4rem;">
+      <div class="proj">
+        <h3>Meta-networks</h3>
+        <p class="meta">New project, starting in 2027</p>
+        <p>Meta-networks develops a general theory of spatially coupled food webs. Building on our meta-food-web models and on the mechanistic, energy-based model of dispersal, it treats the network of habitat patches as an object of study in its own right: how does the structure of the spatial network shape the dynamics, persistence and functioning of the food webs living on it? The project applies network theory systematically to the spatial network and relates its structure to ecological outcomes.</p>
+        <p class="meta">Researchers: Remo Ryser, PhD student (to be recruited)</p>
+      </div>
+
       <div class="proj">
         <h3>Biodiversity–ecosystem functioning in multitrophic metacommunities</h3>
         <p class="meta">SNSF Ambizione project, in collaboration with Eric Allan (UniBe)</p>
@@ -266,13 +333,6 @@
         <h3>sMars — Synthesis of Movement Across Scales</h3>
         <p>Movement drives species interactions, community composition, and biodiversity patterns across scales, but the geographic scale of biodiversity research rarely matches the scale at which animals actually move. We are developing an empirically informed, unified concept of spatial scale and a mechanistic dispersal model grounded in energy budgets and metabolism, alongside a general movement database.</p>
         <p class="meta">Researchers: Remo Ryser &nbsp;·&nbsp; In collaboration with Myriam Hirt &nbsp;·&nbsp; <a href="https://www.idiv.de/research/sdiv/working-groups/smars/">sDiv-funded working group</a></p>
-      </div>
-
-      <div class="proj">
-        <h3>Meta-networks</h3>
-        <p class="meta">New project, starting in 2027</p>
-        <p>Meta-networks develops a general theory of spatially coupled food webs. Building on our meta-food-web models and on the mechanistic, energy-based model of dispersal, it treats the network of habitat patches as an object of study in its own right: how does the structure of the spatial network shape the dynamics, persistence and functioning of the food webs living on it? The project applies network theory systematically to the spatial network and relates its structure to ecological outcomes.</p>
-        <p class="meta">Researchers: Remo Ryser, PhD student (to be recruited)</p>
       </div>
     </div>
 
@@ -289,18 +349,47 @@
   </div>
 </section>
 
-<section class="block" id="log-section">
+<section class="block" id="publications">
+  <span class="org-float" style="top:12%;right:4%;--s:50px;--d:29s;--dx:-14px;--dy:16px;--r0:8deg;--r1:-8deg;animation-delay:-6s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
+  <span class="org-float" style="bottom:10%;left:3%;--s:46px;--d:31s;--dx:14px;--dy:-14px;--r0:-8deg;--r1:8deg;animation-delay:-9s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
   <div class="wrap">
-    <span class="eyebrow">Log</span>
-    <div class="log-item"><span class="prompt">&gt;</span><span class="body">2026: a PhD position opens soon, and a senior research position / experienced postdoc follows in 2027. <a href="#open-positions">See open positions</a>.</span></div>
-    <div class="log-item"><span class="prompt">&gt;</span><span class="body">2026: building Network Ecology, a new division at the Institute of Ecology and Evolution, from February 2027.</span></div>
-    <div class="log-item"><span class="prompt">&gt;</span><span class="body">2024: thematic session, "Dynamical Ecological Networks: connecting topics and approaches," BES 2024.</span></div>
+    <div class="pubs pubs-top">
+      <h2>Selected publications</h2>
+      <ul class="pub-list">
+        <li>Wilkinson, C., Brose, U., Dyer, A., Hirt, M., &amp; <strong>Ryser, R.</strong> (2025). A mechanistic approach to animal dispersal: quantifying energetics and maximum distances. <em>Ecology Letters</em>, 28(2), e70085.</li>
+        <li><strong>Ryser, R.</strong>, Chase, J. M., Gauzens, B., H&auml;ussler, J., Hirt, M. R., Rosenbaum, B., &amp; Brose, U. (2024). Landscape configuration can flip species&ndash;area relationships in dynamic meta-food-webs. <em>Philosophical Transactions of the Royal Society B</em>, 379(1907), 20230138.</li>
+        <li>Sanders, D., Hirt, M. R., Brose, U., Evans, D. M., Gaston, K. J., Gauzens, B., &amp; <strong>Ryser, R.</strong> (2023). How artificial light at night may rewire ecological networks: concepts and models. <em>Philosophical Transactions of the Royal Society B</em>, 378(1892), 20220368.</li>
+        <li>Hirt, M. R., Evans, D. M., Miller, C. R., &amp; <strong>Ryser, R.</strong> (2023). Light pollution in complex ecological systems. <em>Philosophical Transactions of the Royal Society B</em>, 378(1892), 20220351.</li>
+        <li><strong>Ryser, R.</strong>, Hirt, M. R., H&auml;ussler, J., Gravel, D., &amp; Brose, U. (2021). Landscape heterogeneity buffers biodiversity of simulated meta-food-webs under global change through rescue and drainage effects. <em>Nature Communications</em>, 12(1), 4716.</li>
+        <li><strong>Ryser, R.</strong>, H&auml;ussler, J., Stark, M., Brose, U., Rall, B. C., &amp; Guill, C. (2019). The biggest losers: habitat isolation deconstructs complex food webs from top to bottom. <em>Proceedings of the Royal Society B</em>, 286(1908), 20191177.</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<section class="block" id="news">
+  <div class="eq-float eq-sm" id="eqf13" style="top:38%;right:3%;"></div>
+  <span class="org-float" style="top:62%;right:5%;--s:44px;--d:23s;--dx:-20px;--dy:-16px;--r0:10deg;--r1:-12deg;animation-delay:-11s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
+  <span class="org-float" style="bottom:6%;left:3%;--s:58px;--d:33s;--dx:12px;--dy:-10px;--r0:-3deg;--r1:4deg;animation-delay:-1s;"><svg viewBox="0 0 48 48"><use href="#org-tree"/></svg></span>
+  <span class="org-float" style="top:14%;right:7%;--s:60px;--d:29s;--dx:-22px;--dy:14px;--r0:-6deg;--r1:6deg;animation-delay:-6s;"><svg viewBox="0 0 48 48"><use href="#org-cater"/></svg></span>
+  <span class="org-float" style="top:34%;left:2.5%;--s:52px;--d:32s;--dx:14px;--dy:-18px;--r0:-8deg;--r1:9deg;animation-delay:-10s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
+  <div class="wrap">
+    <span class="eyebrow">News</span>
+    <div class="log-item"><span class="prompt">&bull;</span><span class="body">2026: a PhD position opens soon, and a senior research position / experienced postdoc follows in 2027. <a href="#open-positions">See open positions</a>.</span></div>
+    <div class="log-item"><span class="prompt">&bull;</span><span class="body">2026: building Network Ecology, a new division at the Institute of Ecology and Evolution, from February 2027.</span></div>
+    <div class="log-item"><span class="prompt">&bull;</span><span class="body">2024: thematic session, "Dynamical Ecological Networks: connecting topics and approaches," BES 2024.</span></div>
     <iframe src="https://www.youtube.com/embed/HXFYJvMHO1k" title="Dynamical Ecological Networks, BES 2024" loading="lazy" allowfullscreen style="margin-top: 1rem;"></iframe>
   </div>
 </section>
 
 <section class="block" id="contact" style="border-bottom: none;">
-  <div class="eq-float" id="eqf6" style="top:10%; left:5%;"></div>
+  <div class="eq-float" id="eqf6" style="top:1%; left:1.5%;"></div>
+  <div class="eq-float eq-sm" id="eqf14" style="top:62%;left:3%;"></div>
+  <span class="org-float" style="top:18%;right:6%;--s:58px;--d:32s;--dx:-14px;--dy:12px;--r0:6deg;--r1:-6deg;animation-delay:-8s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-lynx"/></svg></span>
+  <span class="org-float" style="bottom:5%;left:9%;--s:52px;--d:30s;--dx:8px;--dy:-12px;--r0:-4deg;--r1:5deg;animation-delay:-19s;"><svg viewBox="0 0 48 48"><use href="#org-grass"/></svg></span>
+  <span class="org-float" style="bottom:12%;right:9%;--s:58px;--d:30s;--dx:-16px;--dy:-20px;--r0:7deg;--r1:-8deg;animation-delay:-2s;"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
+  <span class="org-float" style="top:42%;left:2%;--s:44px;--d:23s;--dx:22px;--dy:-14px;--r0:-12deg;--r1:10deg;animation-delay:-8s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
   <div class="wrap">
     <span class="eyebrow">Contact</span>
     <h2>Get in touch</h2>
@@ -324,13 +413,315 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
 <script>
+/* ---- live meta-food-web in the approach card: landscape -> meta-food-web -> local food web ---- */
+(function(){
+  const card = document.querySelector(".diagram-card");
+  if (!card) return;
+  const cv = document.createElement("canvas");
+  const ctx = cv.getContext && cv.getContext("2d");
+  if (!ctx) return;
+  cv.className = "zoom-canvas";
+  cv.setAttribute("aria-hidden", "true");
+  card.appendChild(cv);
+  card.classList.add("has-canvas");
+
+  const css = getComputedStyle(document.documentElement);
+  const col = n => css.getPropertyValue(n).trim();
+  const C = { prod: col("--leaf") || "#52a95a", moss: col("--accent-soft") || "#2f8a3a",
+              herb: col("--herb") || "#5b99a6", pred: col("--glow") || "#d08d3c", line: col("--line-strong") || "#2d4333" };
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* patches in scene units (400 x 260): x, y, rx, ry */
+  const PS = [[90,195,42,34],[190,150,50,40],[290,185,36,30],[320,90,30,26],[140,75,28,24]];
+  const LINKS = [[0,1],[1,2],[1,4],[2,3],[4,3]];
+  const MAIN = 1;
+  /* terrain for the landscape level: mountains, rivers, a lake */
+  const RIDGE1 = new Path2D("M0,98 L38,62 L74,86 L120,36 L168,82 L214,48 L262,90 L322,42 L368,80 L400,60 L400,132 L0,132 Z");
+  const RIDGE1L = new Path2D("M0,98 L38,62 L74,86 L120,36 L168,82 L214,48 L262,90 L322,42 L368,80 L400,60");
+  const RIDGE2 = new Path2D("M0,126 L58,94 L108,118 L170,92 L238,124 L300,98 L356,124 L400,106 L400,150 L0,150 Z");
+  const SNOW = [[120,36,11],[214,48,10],[322,42,11],[38,62,8]];
+  const RIVER = new Path2D("M214,58 C200,92 252,108 234,136 C218,160 266,176 254,202 C248,226 300,236 348,226");
+  const RIVER2 = new Path2D("M74,80 C92,110 62,128 74,150 C80,163 70,170 66,176");
+  /* land cover per patch: forest (conifers + broadleaf) or meadow (grass + flowers) */
+  const COVER = ["forest", "meadow", "forest", "forest", "meadow"];
+
+  /* model: Rosenzweig-MacArthur chain per patch, coupled by dispersal */
+  let seed = 5;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const M = { a:2.2, h:1.0, e:0.6, m:0.22, b:1.1, h2:1.2, e2:0.45, m2:0.12, dH:0.05, dC:0.08 };
+  const pat = PS.map(() => ({ P: 0.6 + rnd()*0.8, H: 0.2 + rnd()*0.5, Cc: 0.12 + rnd()*0.2,
+                              K: 1.35 + rnd()*0.55, r: 0.9 + rnd()*0.3, f1: 0, f2: 0 }));
+  function step(dt){
+    const d = pat.map(() => [0,0,0]);
+    pat.forEach((q,i) => {
+      q.f1 = M.a*q.P/(1 + M.a*M.h*q.P) * q.H;
+      q.f2 = M.b*q.H/(1 + M.b*M.h2*q.H) * q.Cc;
+      d[i][0] = q.r*q.P*(1 - q.P/q.K) - q.f1;
+      d[i][1] = M.e*q.f1 - M.m*q.H - q.f2;
+      d[i][2] = M.e2*q.f2 - M.m2*q.Cc;
+    });
+    LINKS.forEach(([i,j]) => {
+      const A = pat[i], B = pat[j], fh = M.dH*(B.H - A.H), fc = M.dC*(B.Cc - A.Cc);
+      d[i][1] += fh; d[j][1] -= fh; d[i][2] += fc; d[j][2] -= fc;
+    });
+    pat.forEach((q,i) => {
+      q.P = Math.max(0.02, q.P + dt*d[i][0]); q.H = Math.max(0.02, q.H + dt*d[i][1]); q.Cc = Math.max(0.01, q.Cc + dt*d[i][2]);
+    });
+  }
+  for (let i = 0; i < 4000; i++) step(0.02);
+  const veg = PS.map((p, i) => {
+    const arr = [], n = COVER[i] === "forest" ? 9 : 14;
+    for (let k = 0; k < n; k++){
+      const ang = rnd()*6.2832, rr = Math.sqrt(rnd())*0.78;
+      arr.push({ dx: Math.cos(ang)*rr*p[2], dy: Math.sin(ang)*rr*p[3], t: rnd(), ph: rnd()*6.2832, f: rnd() });
+    }
+    return arr.sort((u, v) => u.dy - v.dy);
+  });
+
+  const NODES = [{x:-.55,y:.46,t:0},{x:0,y:.5,t:0},{x:.55,y:.46,t:0},{x:-.3,y:.02,t:1},{x:.3,y:.02,t:1},{x:0,y:-.5,t:2}];
+  const EDGES = [[0,3],[1,3],[1,4],[2,4],[3,5],[4,5]];
+
+  const phase = pat.map(() => EDGES.map(() => rnd()));
+  const parts = [], ripples = [];
+  let W = 0, H = 0, dpr = 1;
+
+  const sm = x => { x = Math.max(0, Math.min(1, x)); return x*x*(3 - 2*x); };
+  const nrm = (v, m) => Math.min(1, v/m);
+  /* timeline of the zoom level: 0 landscape, 1 meta-food-web, 2 local food web */
+  const HOLD = [0, 6.5, 13.5];
+  function zOf(t){
+    t = t % 21;
+    if (t < 4.5) return 0;
+    if (t < 6.5) return sm((t - 4.5)/2);
+    if (t < 11) return 1;
+    if (t < 13.5) return 1 + sm((t - 11)/2.5);
+    if (t < 18.5) return 2;
+    return 2 - 2*sm((t - 18.5)/2.5);
+  }
+
+  const bar = document.getElementById("zoomCaption");
+  const btns = bar ? bar.querySelectorAll("button") : [];
+  let activeLvl = -1;
+  function setActive(l){
+    if (l === activeLvl) return; activeLvl = l;
+    btns.forEach((b, i) => { b.classList.toggle("on", i === l); b.setAttribute("aria-pressed", i === l ? "true" : "false"); });
+  }
+
+  function resize(){
+    const r = card.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    cv.width = Math.round(W*dpr); cv.height = Math.round(H*dpr);
+    cv.style.width = W + "px"; cv.style.height = H + "px";
+    if (reduce || !running) draw(clock);
+  }
+
+  function ctrl(i, j){
+    const a = PS[i], b = PS[j], mx = (a[0] + b[0])/2, my = (a[1] + b[1])/2;
+    const nx = -(b[1] - a[1]), ny = (b[0] - a[0]), len = Math.hypot(nx, ny) || 1;
+    const bend = Math.min(16, len*0.12) * (((i + j) % 2) ? 1 : -1);
+    return { x: mx + nx/len*bend, y: my + ny/len*bend };
+  }
+  const bez = (a, c, b, t) => { const u = 1 - t; return { x: u*u*a[0] + 2*u*t*c.x + t*t*b[0], y: u*u*a[1] + 2*u*t*c.y + t*t*b[1] }; };
+
+  function spawn(dt){
+    LINKS.forEach(([i,j], li) => {
+      const A = pat[i], B = pat[j], dh = A.H - B.H, dc = A.Cc - B.Cc;
+      const rate = 0.2 + 5*Math.abs(dh) + 9*Math.abs(dc);
+      if (parts.length < 40 && Math.random() < rate*dt){
+        const useC = Math.random() < Math.min(0.5, Math.abs(dc)*8 + 0.12);
+        parts.push({ li, dir: ((useC ? dc : dh) >= 0) ? 1 : -1, t: 0, v: 0.2 + Math.random()*0.16, kind: useC ? 2 : 1 });
+      }
+    });
+  }
+
+  function draw(time){
+    const z = reduce ? Math.max(zStatic, 0) : zOf(time);
+    setActive(z < 0.5 ? 0 : (z < 1.5 ? 1 : 2));
+    const wL = Math.max(0, 1 - z), wM = Math.max(0, 1 - Math.abs(z - 1)), wW = Math.max(0, z - 1);
+    const zoom = 1 + 1.45*sm(wW);
+    const sc = W/400, k = sc*zoom;
+    const cx = 200 + (PS[MAIN][0] - 200)*sm(wW), cy = 130 + (PS[MAIN][1] - 130)*sm(wW);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.setTransform(dpr*k, 0, 0, dpr*k, dpr*(W/2 - cx*k), dpr*(H/2 - cy*k));
+    const px = n => n/k;
+
+    /* terrain: mountains, rivers, lake (strong at the landscape level, a faint backdrop later) */
+    const tA = 0.1 + 0.9*wL;
+    ctx.globalAlpha = tA;
+    const g1 = ctx.createLinearGradient(0, 36, 0, 150);
+    g1.addColorStop(0, "rgba(47,138,58,0.55)"); g1.addColorStop(1, "rgba(47,138,58,0.04)");
+    ctx.fillStyle = g1; ctx.fill(RIDGE1);
+    const g2 = ctx.createLinearGradient(0, 92, 0, 150);
+    g2.addColorStop(0, "rgba(91,153,166,0.30)"); g2.addColorStop(1, "rgba(91,153,166,0.02)");
+    ctx.fillStyle = g2; ctx.fill(RIDGE2);
+    ctx.strokeStyle = C.moss; ctx.lineWidth = px(1); ctx.globalAlpha = tA*0.8; ctx.stroke(RIDGE1L);
+    ctx.fillStyle = "#f2f4ef"; ctx.globalAlpha = tA*0.75;
+    SNOW.forEach(([sx, sy, sw]) => {
+      ctx.beginPath(); ctx.moveTo(sx, sy); ctx.lineTo(sx - sw, sy + sw*1.35); ctx.lineTo(sx - sw*0.4, sy + sw*1.0);
+      ctx.lineTo(sx, sy + sw*1.4); ctx.lineTo(sx + sw*0.45, sy + sw*1.0); ctx.lineTo(sx + sw, sy + sw*1.35); ctx.closePath(); ctx.fill();
+    });
+    ctx.lineCap = "round";
+    [[RIVER, 3.2], [RIVER2, 2.2]].forEach(([p, rw]) => {
+      ctx.strokeStyle = C.herb; ctx.globalAlpha = tA*0.55; ctx.lineWidth = px(rw); ctx.setLineDash([]); ctx.stroke(p);
+      ctx.globalAlpha = tA*0.9; ctx.strokeStyle = "#d6eaee"; ctx.lineWidth = px(1); ctx.setLineDash([px(4), px(11)]);
+      ctx.lineDashOffset = -time*px(16); ctx.stroke(p);
+      ctx.setLineDash([]);
+    });
+    ctx.globalAlpha = tA*0.5; ctx.fillStyle = C.herb;
+    ctx.beginPath(); ctx.ellipse(356, 226, 22, 9, 0, 0, 6.2832); ctx.fill();
+    ctx.globalAlpha = tA*0.6; ctx.strokeStyle = "#d6eaee"; ctx.lineWidth = px(1);
+    ctx.beginPath(); ctx.ellipse(356, 226, 22*(0.55 + 0.08*Math.sin(time*1.4)), 9*(0.5 + 0.08*Math.sin(time*1.4)), 0, 0, 6.2832); ctx.stroke();
+
+    /* links (dispersal routes) */
+    ctx.strokeStyle = C.moss; ctx.lineWidth = px(1);
+    ctx.globalAlpha = (0.9*wM)*(1 - 0.5*sm(wW));
+    LINKS.forEach(([i,j]) => {
+      const c = ctrl(i, j);
+      ctx.beginPath(); ctx.moveTo(PS[i][0], PS[i][1]); ctx.quadraticCurveTo(c.x, c.y, PS[j][0], PS[j][1]); ctx.stroke();
+    });
+
+    /* patches */
+    pat.forEach((q, i) => {
+      const [x, y, rx, ry] = PS[i];
+      const tot = (nrm(q.P,1.8) + nrm(q.H,0.9) + nrm(q.Cc,0.45))/3;
+      const br = 1 + 0.04*tot*Math.sin(time*0.8 + i);
+      ctx.globalAlpha = (i === MAIN ? 0.5 : 0.36) - 0.18*wM;
+      ctx.fillStyle = C.moss;
+      ctx.beginPath(); ctx.ellipse(x, y, rx*br, ry*br, 0, 0, 6.2832); ctx.fill();
+      ctx.globalAlpha = 0.5*(1 - wM*0.5); ctx.strokeStyle = C.moss; ctx.lineWidth = px(1);
+      ctx.beginPath(); ctx.ellipse(x, y, rx*br, ry*br, 0, 0, 6.2832); ctx.stroke();
+
+      /* land cover: forests and meadows breathe with plant biomass; a paw print tracks predator biomass */
+      if (wL > 0.01){
+        const nP = nrm(q.P, 1.8), fo = COVER[i] === "forest";
+        veg[i].forEach(v => {
+          const vx = x + v.dx + Math.sin(time*0.9 + v.ph)*0.5, vy = y + v.dy;
+          if (fo){
+            if (v.t < 0.55){
+              const h2 = 7 + 4*nP + 2*v.f, w2 = 3 + 1.4*nP;
+              ctx.globalAlpha = wL*0.9; ctx.fillStyle = v.f < 0.5 ? C.moss : C.prod;
+              ctx.beginPath(); ctx.moveTo(vx, vy - h2); ctx.lineTo(vx - w2, vy); ctx.lineTo(vx + w2, vy); ctx.closePath(); ctx.fill();
+            } else {
+              ctx.globalAlpha = wL*0.9; ctx.strokeStyle = C.line; ctx.lineWidth = px(1.2);
+              ctx.beginPath(); ctx.moveTo(vx, vy); ctx.lineTo(vx, vy + 4); ctx.stroke();
+              ctx.fillStyle = C.prod; ctx.globalAlpha = wL*0.8;
+              ctx.beginPath(); ctx.arc(vx, vy - 2, 3 + 2.2*nP, 0, 6.2832); ctx.fill();
+            }
+          } else {
+            ctx.globalAlpha = wL*0.85; ctx.strokeStyle = C.prod; ctx.lineWidth = px(1.1);
+            const gh = 2.5 + 3*nP;
+            ctx.beginPath(); ctx.moveTo(vx - 1.2, vy); ctx.lineTo(vx - 1.8, vy - gh); ctx.moveTo(vx, vy); ctx.lineTo(vx, vy - gh*1.2); ctx.moveTo(vx + 1.2, vy); ctx.lineTo(vx + 1.9, vy - gh); ctx.stroke();
+            if (v.f > 0.72){ ctx.fillStyle = v.f > 0.86 ? C.pred : "#f2f4ef"; ctx.globalAlpha = wL*0.9;
+              ctx.beginPath(); ctx.arc(vx, vy - gh*1.3, 1.1, 0, 6.2832); ctx.fill(); }
+          }
+        });
+        const s = 0.55 + 0.7*nrm(q.Cc, 0.45), px0 = x + rx*0.2, py0 = y + ry*0.32;
+        ctx.fillStyle = C.pred; ctx.globalAlpha = wL*0.85;
+        ctx.beginPath(); ctx.ellipse(px0, py0 + 2*s, 3.2*s, 2.5*s, 0, 0, 6.2832); ctx.fill();
+        [[-3,-2],[0,-3.3],[3,-2]].forEach(o => { ctx.beginPath(); ctx.arc(px0 + o[0]*s, py0 + o[1]*s, 1.1*s, 0, 6.2832); ctx.fill(); });
+      }
+
+      /* meta-food-web node: nested producer / herbivore / predator disks */
+      if (wM > 0.01){
+        ctx.globalAlpha = wM*0.92;
+        ctx.fillStyle = C.moss; ctx.beginPath(); ctx.arc(x, y, 6 + 9*Math.sqrt(nrm(q.P,1.8)), 0, 6.2832); ctx.fill();
+        ctx.fillStyle = C.herb; ctx.beginPath(); ctx.arc(x, y, 3 + 6*Math.sqrt(nrm(q.H,0.9)), 0, 6.2832); ctx.fill();
+        ctx.fillStyle = C.pred; ctx.beginPath(); ctx.arc(x, y, 1.6 + 3.8*Math.sqrt(nrm(q.Cc,0.45)), 0, 6.2832); ctx.fill();
+      }
+
+      /* local food web with energy flow */
+      if (wW > 0.01){
+        const R = Math.min(rx, ry)*0.92;
+        const fl = [q.f1*0.5, q.f1*0.5, q.f1*0.5, q.f1*0.5, q.f2*0.5, q.f2*0.5];
+        EDGES.forEach(([a, b], ei) => {
+          const A = NODES[a], B = NODES[b];
+          const ax = x + A.x*R, ay = y + A.y*R, bx = x + B.x*R, by = y + B.y*R;
+          ctx.globalAlpha = 0.6*wW; ctx.strokeStyle = C.moss; ctx.lineWidth = px(1);
+          ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx, by); ctx.stroke();
+          for (let kk = 0; kk < 2; kk++){
+            const t = (phase[i][ei] + kk*0.5) % 1;
+            ctx.globalAlpha = wW*Math.sin(t*3.1416); ctx.fillStyle = C.prod;
+            ctx.beginPath(); ctx.arc(ax + (bx-ax)*t, ay + (by-ay)*t, px(1.7), 0, 6.2832); ctx.fill();
+          }
+          phase[i][ei] = (phase[i][ei] + (reduce ? 0 : 0.0167)*(0.2 + fl[ei]*2.2)) % 1;
+        });
+        NODES.forEach(n => {
+          const nx = x + n.x*R, ny = y + n.y*R; let rad, c;
+          if (n.t === 0){ rad = R*(0.07 + 0.085*Math.sqrt(nrm(q.P,1.8))); c = C.moss; }
+          else if (n.t === 1){ rad = R*(0.065 + 0.09*Math.sqrt(nrm(q.H,0.9))); c = C.herb; }
+          else { rad = R*(0.075 + 0.1*Math.sqrt(nrm(q.Cc,0.45))); c = C.pred; }
+          ctx.fillStyle = c; ctx.globalAlpha = 0.18*wW;
+          ctx.beginPath(); ctx.arc(nx, ny, rad*2, 0, 6.2832); ctx.fill();
+          ctx.globalAlpha = 0.95*wW;
+          ctx.beginPath(); ctx.arc(nx, ny, rad, 0, 6.2832); ctx.fill();
+        });
+      }
+    });
+
+    /* dispersal particles and arrival ripples (not shown on the landscape level) */
+    const pa = Math.min(1, wM*1.4 + wW);
+    if (pa > 0.02) parts.forEach(pt => {
+      const [i, j] = LINKS[pt.li], from = pt.dir > 0 ? i : j, to = pt.dir > 0 ? j : i;
+      const c = ctrl(i, j), e = pt.t*pt.t*(3 - 2*pt.t);
+      const s = bez(PS[from], c, PS[to], e), s0 = bez(PS[from], c, PS[to], Math.max(0, e - 0.06));
+      const cl = pt.kind === 2 ? C.pred : C.herb;
+      ctx.globalAlpha = 0.5*pa; ctx.strokeStyle = cl; ctx.lineWidth = px(1.6);
+      ctx.beginPath(); ctx.moveTo(s0.x, s0.y); ctx.lineTo(s.x, s.y); ctx.stroke();
+      ctx.globalAlpha = 0.95*pa; ctx.fillStyle = cl;
+      ctx.beginPath(); ctx.arc(s.x, s.y, px(pt.kind === 2 ? 3 : 2.4), 0, 6.2832); ctx.fill();
+    });
+    if (pa > 0.02) ripples.forEach(r => {
+      ctx.globalAlpha = 0.55*pa*(1 - r.t); ctx.strokeStyle = r.kind === 2 ? C.pred : C.herb; ctx.lineWidth = px(1.3);
+      ctx.beginPath(); ctx.ellipse(PS[r.p][0], PS[r.p][1], PS[r.p][2]*(0.5 + 0.7*r.t), PS[r.p][3]*(0.5 + 0.7*r.t), 0, 0, 6.2832); ctx.stroke();
+    });
+    ctx.globalAlpha = 1;
+  }
+
+  let running = false, last = 0, acc = 0, clock = 0, zStatic = 1;
+  function frame(now){
+    if (!running) return;
+    const dt = Math.min(0.05, (now - last)/1000 || 0.016); last = now; clock += dt;
+    acc += dt*150; while (acc >= 1){ step(0.02); acc -= 1; }
+    spawn(dt);
+    for (let k = parts.length - 1; k >= 0; k--){
+      const pt = parts[k]; pt.t += pt.v*dt;
+      if (pt.t >= 1){ const [i, j] = LINKS[pt.li]; ripples.push({ p: pt.dir > 0 ? j : i, t: 0, kind: pt.kind }); parts.splice(k, 1); }
+    }
+    for (let k = ripples.length - 1; k >= 0; k--){ ripples[k].t += dt*0.9; if (ripples[k].t >= 1) ripples.splice(k, 1); }
+    draw(clock);
+    requestAnimationFrame(frame);
+  }
+  function start(){ if (running || reduce) return; running = true; last = performance.now(); requestAnimationFrame(frame); }
+  function stop(){ running = false; }
+
+  btns.forEach((b, i) => b.addEventListener("click", () => {
+    if (reduce){ zStatic = i; draw(0); } else { clock = HOLD[i] + 0.01; if (!running) draw(clock); }
+  }));
+  resize();
+  if (window.ResizeObserver) new ResizeObserver(resize).observe(card); else window.addEventListener("resize", resize);
+  if (reduce) draw(0);
+  else if ("IntersectionObserver" in window) new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? start() : stop())).observe(card);
+  else start();
+  document.addEventListener("visibilitychange", () => { if (document.hidden) stop(); });
+})();
+
 const floatingEquations = [
   "\\dot{N} = rN\\left(1-\\dfrac{N}{K}\\right)",
   "\\dot{P} = eaNP - mP",
   "f(N) = \\dfrac{aN}{1+ahN}",
   "B = B_0\\,M^{3/4}",
   "S = cA^{z}",
-  "\\dot{B}_i = r_iG_iB_i - x_iB_i"
+  "\\dot{B}_{i}=r_iG_iB_i-\\sum_j B_jF_{ji}-x_iB_i",
+  "G_i=\\dfrac{N}{K_i+N}",
+  "F_{ij}=\\dfrac{\\omega_i b_{ij}R_j^{1+q}}{1+\\omega_i\\sum_k b_{ik}h_{ik}R_k^{1+q}}\\cdot\\dfrac{1}{m_i}",
+  "\\begin{gathered}\\dot{B}_{i}=B_i\\sum_j e_jF_{ij}-\\sum_j B_jF_{ji}\\\\ \\quad-x_iB_i-E_i+I_i\\end{gathered}",
+  "\\begin{gathered}E_{i,z}=d_{i,z}B_{i,z},\\\\ d_{i,z}=\\dfrac{a}{1+e^{-b(x_i-v_{i,z})}}\\end{gathered}",
+  "I_{i,z}=\\sum_{n}E_{i,n}\\dfrac{\\max(1-\\delta_{i,nz},0)}{\\sum_{m}\\max(1-\\delta_{i,nm},0)}",
+  "\\delta_i=\\delta_0\\,m_i^{\\varepsilon}",
+  "h_{ij}=h_0\\,m_i^{\\eta_i}m_j^{\\eta_j}",
+  "\\dot{N}_z=D(S-N_z)-\\sum_i r_iG_iP_{i,z}"
 ];
 if (window.katex){
   floatingEquations.forEach((tex, i) => {
