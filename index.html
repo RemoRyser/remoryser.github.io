@@ -66,15 +66,20 @@
   </defs>
 </svg>
 
+<canvas id="bgNet" aria-hidden="true"></canvas>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
 <nav class="site-nav" aria-label="Main">
   <div class="wide">
     <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">&#9672;</span><span class="brand-text">NETWORK ECOLOGY</span></a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navMenu">
       <li><a href="#about">About</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#news">News</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -86,29 +91,6 @@
   <span class="org-float" style="top:36%;right:3%;--s:46px;--d:24s;--dx:-14px;--dy:18px;--r0:14deg;--r1:-8deg;animation-delay:-6s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
   <span class="org-float" style="top:44%;left:1.5%;--s:56px;--d:28s;--dx:22px;--dy:-20px;--r0:-12deg;--r1:8deg;animation-delay:-3s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-moth"/></svg></span>
   <span class="org-float" style="top:16%;right:32%;--s:44px;--d:22s;--dx:26px;--dy:18px;--r0:10deg;--r1:-14deg;animation-delay:-9s;"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
-  <svg class="hero-net" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <path class="edge" d="M120,380 L300,220" />
-    <path class="edge pulse" d="M300,220 L520,300" />
-    <path class="edge" d="M300,220 L260,90" />
-    <path class="edge" d="M520,300 L720,140" />
-    <path class="edge pulse" d="M520,300 L640,420" />
-    <path class="edge" d="M720,140 L900,220" />
-    <path class="edge" d="M720,140 L980,80" />
-    <path class="edge pulse" d="M900,220 L1080,340" />
-    <path class="edge" d="M640,420 L900,220" />
-    <path class="edge" d="M260,90 L520,300" />
-    <path class="edge" d="M980,80 L1150,180" />
-    <circle class="node" cx="120" cy="380" r="4" />
-    <circle class="node" cx="300" cy="220" r="6" />
-    <circle class="node glow" cx="520" cy="300" r="5" />
-    <circle class="node" cx="260" cy="90" r="3.5" />
-    <circle class="node" cx="720" cy="140" r="7" />
-    <circle class="node" cx="900" cy="220" r="4.5" />
-    <circle class="node glow" cx="980" cy="80" r="4" />
-    <circle class="node" cx="640" cy="420" r="5" />
-    <circle class="node" cx="1080" cy="340" r="3.5" />
-    <circle class="node" cx="1150" cy="180" r="4" />
-  </svg>
   <div class="wide hero-content">
     <span class="eyebrow">Network Ecology, Institute of Ecology and Evolution, University of Bern</span>
     <h1>Networks <em>among species</em> &amp; networks <em>in space</em></h1>
@@ -219,8 +201,8 @@
 
 <section class="block" id="about">
   <div class="eq-float" id="eqf3" style="top:6%; right:4%;"></div>
-  <div class="eq-float" id="eqf4" style="top:60%; left:3%;"></div>
-  <div class="eq-float eq-sm eq-wide" id="eqf9" style="top:30%;left:2%;"></div>
+  <div class="eq-float eq-sm eq-wide" id="eqf4" style="top:60%; left:1%;"></div>
+  <div class="eq-float eq-sm eq-wide eq-xwide" id="eqf9" style="top:30%;left:2%;"></div>
   <div class="eq-float eq-sm eq-wide" id="eqf10" style="top:84%;right:2%;"></div>
   <span class="org-float" style="top:18%;left:1.5%;--s:50px;--d:30s;--dx:12px;--dy:-16px;--r0:-7deg;--r1:8deg;animation-delay:-2s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
   <span class="org-float" style="top:48%;right:3%;--s:48px;--d:26s;--dx:-16px;--dy:-18px;--r0:10deg;--r1:-12deg;animation-delay:-9s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
@@ -230,15 +212,14 @@
   <span class="org-float" style="top:32%;right:1.5%;--s:58px;--d:27s;--dx:-24px;--dy:20px;--r0:8deg;--r1:-12deg;animation-delay:-7s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-moth"/></svg></span>
   <span class="org-float" style="bottom:3%;right:6%;--s:66px;--d:34s;--dx:-14px;--dy:-12px;--r0:-3deg;--r1:4deg;animation-delay:-14s;"><svg viewBox="0 0 48 48"><use href="#org-tree"/></svg></span>
   <div class="wrap">
-    <span class="eyebrow">About</span>
-    <h2>About the group</h2>
+    <span class="eyebrow sec">About</span>
 
     <div class="about-text">
       <p>Network Ecology is a research group at the University of Bern, led by Remo Ryser. From February 2027 it becomes a division of the Institute of Ecology and Evolution. We study how networks of interacting species and networks of habitat patches in space form, move and change, and what this means for biodiversity and ecosystem functioning.</p>
 
       <p>Our work is theory-led and mechanistic. We build models from individual traits and metabolism up to food webs and whole landscapes, and confront them with empirical data, from grassland experiments to movement data. Current themes include meta-food-webs and dispersal, biodiversity&ndash;ecosystem functioning, movement across scales, and the effects of artificial light at night.</p>
 
-      <p>The aim is to turn first-principles theory into forecasts that can inform real decisions in a changing world. We are open to collaborations, and we are a growing, international team of PhD students, postdocs and senior researchers (see <a href="#team">People</a>).</p>
+      <p>The aim is to turn first-principles theory into forecasts that can inform real decisions in a changing world. We are open to collaborations, and we are a growing, international team of PhD students, postdocs and senior researchers (see <a href="#team">Team</a>).</p>
     </div>
 
     <img class="wide-photo" src="images/mountains.jpg" alt="Mountains in the Swiss Alps" loading="lazy" decoding="async">
@@ -247,8 +228,7 @@
 
 <section class="block" id="team">
   <div class="wrap">
-    <span class="eyebrow">Team</span>
-    <h2>People</h2>
+    <span class="eyebrow sec">Team</span>
 
     <div class="team-grid" style="margin-top: 2rem;">
       <div class="person">
@@ -311,8 +291,7 @@
   <span class="org-float" style="top:46%;left:1.5%;--s:62px;--d:31s;--dx:18px;--dy:-16px;--r0:-6deg;--r1:7deg;animation-delay:-4s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-lynx"/></svg></span>
   <span class="org-float" style="top:80%;right:3.5%;--s:50px;--d:25s;--dx:-16px;--dy:-22px;--r0:12deg;--r1:-10deg;animation-delay:-12s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-beetle"/></svg></span>
   <div class="wrap">
-    <span class="eyebrow">Projects</span>
-    <h2>What we work on</h2>
+    <span class="eyebrow sec">Projects</span>
 
     <div class="proj-group" style="margin-top: 1.4rem;">
       <div class="proj">
@@ -354,7 +333,7 @@
   <span class="org-float" style="bottom:10%;left:3%;--s:46px;--d:31s;--dx:14px;--dy:-14px;--r0:-8deg;--r1:8deg;animation-delay:-9s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
   <div class="wrap">
     <div class="pubs pubs-top">
-      <h2>Selected publications</h2>
+      <span class="eyebrow sec">Selected publications</span>
       <ul class="pub-list">
         <li>Wilkinson, C., Brose, U., Dyer, A., Hirt, M., &amp; <strong>Ryser, R.</strong> (2025). A mechanistic approach to animal dispersal: quantifying energetics and maximum distances. <em>Ecology Letters</em>, 28(2), e70085.</li>
         <li><strong>Ryser, R.</strong>, Chase, J. M., Gauzens, B., H&auml;ussler, J., Hirt, M. R., Rosenbaum, B., &amp; Brose, U. (2024). Landscape configuration can flip species&ndash;area relationships in dynamic meta-food-webs. <em>Philosophical Transactions of the Royal Society B</em>, 379(1907), 20230138.</li>
@@ -375,8 +354,7 @@
   <span class="org-float" style="top:14%;right:7%;--s:60px;--d:29s;--dx:-22px;--dy:14px;--r0:-6deg;--r1:6deg;animation-delay:-6s;"><svg viewBox="0 0 48 48"><use href="#org-cater"/></svg></span>
   <span class="org-float" style="top:34%;left:2.5%;--s:52px;--d:32s;--dx:14px;--dy:-18px;--r0:-8deg;--r1:9deg;animation-delay:-10s;color:var(--glow);"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
   <div class="wrap">
-    <span class="eyebrow">News</span>
-    <div class="log-item"><span class="prompt">&bull;</span><span class="body">2026: a PhD position opens soon, and a senior research position / experienced postdoc follows in 2027. <a href="#open-positions">See open positions</a>.</span></div>
+    <span class="eyebrow sec">News</span>
     <div class="log-item"><span class="prompt">&bull;</span><span class="body">2026: building Network Ecology, a new division at the Institute of Ecology and Evolution, from February 2027.</span></div>
     <div class="log-item"><span class="prompt">&bull;</span><span class="body">2024: thematic session, "Dynamical Ecological Networks: connecting topics and approaches," BES 2024.</span></div>
     <iframe src="https://www.youtube.com/embed/HXFYJvMHO1k" title="Dynamical Ecological Networks, BES 2024" loading="lazy" allowfullscreen style="margin-top: 1rem;"></iframe>
@@ -391,8 +369,7 @@
   <span class="org-float" style="bottom:12%;right:9%;--s:58px;--d:30s;--dx:-16px;--dy:-20px;--r0:7deg;--r1:-8deg;animation-delay:-2s;"><svg viewBox="0 0 48 48"><use href="#org-flower"/></svg></span>
   <span class="org-float" style="top:42%;left:2%;--s:44px;--d:23s;--dx:22px;--dy:-14px;--r0:-12deg;--r1:10deg;animation-delay:-8s;color:var(--herb);"><svg viewBox="0 0 48 48"><use href="#org-bee"/></svg></span>
   <div class="wrap">
-    <span class="eyebrow">Contact</span>
-    <h2>Get in touch</h2>
+    <span class="eyebrow sec">Contact</span>
 
     <div class="contact-block" style="margin-top: 1.6rem;">
       <p style="margin-bottom:0.6em;"><strong>Network Ecology</strong></p>
@@ -748,6 +725,79 @@ if ("IntersectionObserver" in window){
 
   sections.forEach((s) => observer.observe(s));
 }
+
+/* faint background network */
+(function(){
+  const cv = document.getElementById("bgNet"); if (!cv) return;
+  const ctx = cv.getContext("2d");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const css = getComputedStyle(document.documentElement);
+  const col = n => css.getPropertyValue(n).trim();
+  const hex = (h, a) => { const n = parseInt(h.replace("#",""), 16); return "rgba(" + (n>>16&255) + "," + (n>>8&255) + "," + (n&255) + "," + a + ")"; };
+  const G = col("--accent") || "#246c2a", O = col("--glow") || "#d08d3c", B = col("--herb") || "#5b99a6";
+  let W = 0, H = 0, dpr = 1, nodes = [], last = 0, running = true;
+  const LINK = 230;
+  function init(){
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    cv.width = W*dpr; cv.height = H*dpr;
+    const n = Math.max(14, Math.min(46, Math.round(W*H/30000)));
+    nodes = [];
+    for (let i = 0; i < n; i++){
+      const r = Math.random();
+      nodes.push({ x: Math.random()*W, y: Math.random()*H*1.4, vx: (Math.random()-0.5)*7, vy: (Math.random()-0.5)*7,
+        r: 2 + Math.random()*3.2, c: r < 0.12 ? O : (r < 0.3 ? B : G) });
+    }
+  }
+  function draw(dt){
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    const span = H*1.4, off = (window.scrollY*0.18) % span;
+    nodes.forEach(p => {
+      p.x += p.vx*dt; p.y += p.vy*dt;
+      if (p.x < -40) p.x = W + 40; else if (p.x > W + 40) p.x = -40;
+      if (p.y < 0) p.y += span; else if (p.y > span) p.y -= span;
+      p.sy = ((p.y - off) % span + span) % span - H*0.2;
+    });
+    ctx.lineWidth = 1;
+    for (let i = 0; i < nodes.length; i++){
+      for (let j = i + 1; j < nodes.length; j++){
+        const a = nodes[i], b = nodes[j], dx = a.x - b.x, dy = a.sy - b.sy, d = Math.sqrt(dx*dx + dy*dy);
+        if (d < LINK){
+          ctx.strokeStyle = hex(G, 0.10*(1 - d/LINK));
+          ctx.beginPath(); ctx.moveTo(a.x, a.sy); ctx.lineTo(b.x, b.sy); ctx.stroke();
+        }
+      }
+    }
+    nodes.forEach(p => { ctx.fillStyle = hex(p.c, 0.14); ctx.beginPath(); ctx.arc(p.x, p.sy, p.r, 0, 6.2832); ctx.fill(); });
+  }
+  function loop(t){
+    if (!running) return;
+    const dt = Math.min(0.1, (t - last)/1000 || 0.03); last = t;
+    draw(dt);
+    requestAnimationFrame(loop);
+  }
+  init();
+  if (reduce){ draw(0); window.addEventListener("scroll", () => draw(0), { passive: true }); }
+  else requestAnimationFrame(loop);
+  window.addEventListener("resize", () => { init(); if (reduce) draw(0); });
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+    if (running && !reduce){ last = performance.now(); requestAnimationFrame(loop); }
+  });
+})();
+
+/* mobile menu */
+(function(){
+  const btn = document.querySelector(".nav-toggle"), menu = document.getElementById("navMenu"), nav = document.querySelector(".site-nav");
+  if (!btn || !menu) return;
+  const set = open => { nav.classList.toggle("menu-open", open); btn.setAttribute("aria-expanded", open ? "true" : "false"); };
+  btn.addEventListener("click", () => set(!nav.classList.contains("menu-open")));
+  menu.addEventListener("click", e => { if (e.target.closest("a")) set(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") set(false); });
+  document.addEventListener("click", e => { if (!nav.contains(e.target)) set(false); });
+  window.addEventListener("resize", () => { if (window.innerWidth > 860) set(false); });
+})();
 </script>
 
 </body>
